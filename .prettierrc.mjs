@@ -13,4 +13,7 @@ export default {
   tabWidth: 2,
   semi: true,
   jsxSingleQuote: true,
+  singleQuote: true,
+  useTabs: true,
+  trailingComma: "all",
 };
