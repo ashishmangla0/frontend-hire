@@ -1,0 +1,16 @@
+---
+import { siteMetadata } from '@/constants/site-config';
+
+type Props = {
+	title?: string;
+	description?: string;
+};
+
+const { title, description = '' } = Astro.props;
+---
+
+<title>
+	{title ? `${title} | ${siteMetadata.title}` : siteMetadata.title}
+</title>
+
+<meta name='description' content={description} />
