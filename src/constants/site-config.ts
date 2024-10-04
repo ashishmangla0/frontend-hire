@@ -51,21 +51,24 @@ const SITE_METADATA = {
 	],
 };
 
-type Route = {
+export type Route = {
 	name: string;
 	url: string;
 	isExternal?: boolean;
 	showOnMainNav?: boolean;
+	subRoutes?: Route[];
 };
 
-const ROUTES: {
-	[key: string]: {
-		name: string;
-		url: string;
-		isExternal?: boolean;
-		showOnMainNav?: boolean;
-		subRoutes?: Route[];
-	};
-}[] = [{}];
+const ROUTES: Route[] = [
+	{
+		name: 'Courses',
+		url: '/courses',
+		showOnMainNav: true,
+	},
+	{
+		name: 'Authors',
+		url: '/authors',
+	},
+];
 
 export { SITE_METADATA, SITE_URL, ROUTES };
