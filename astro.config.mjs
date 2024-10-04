@@ -6,11 +6,11 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 import react from '@astrojs/react';
-import { siteUrl } from './src/constants/site-config';
+import { SITE_URL } from './src/constants/site-config';
 
 // https://astro.build/config
 export default defineConfig({
-	site: siteUrl,
+	site: SITE_URL,
 	integrations: [
 		tailwind({
 			applyBaseStyles: false,

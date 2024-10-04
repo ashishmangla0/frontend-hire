@@ -1,12 +1,12 @@
-const buildMode = process.env.BUILD_ENV || 'production';
+const BUILD_MODE = process.env.BUILD_ENV || 'production';
 
-const siteUrl = (() => {
+const SITE_URL = (() => {
 	let siteUrl = process.env.SITE_URL || process.env.VERCEL_URL || '';
 
 	if (siteUrl && !siteUrl.startsWith('http')) siteUrl = `https://${siteUrl}`;
 
 	if (!siteUrl) {
-		switch (buildMode) {
+		switch (BUILD_MODE) {
 			case 'production':
 				return 'https://frontendhire.com';
 			case 'development':
@@ -19,11 +19,11 @@ const siteUrl = (() => {
 	return siteUrl;
 })();
 
-const siteMetadata = {
+const SITE_METADATA = {
 	title: 'Frontend Hire',
 	description:
 		'We are solving Frontend Interviews and Hiring. Our platform helps developers build essential frontend skills, preparing them for technical interviews and real-world development.',
-	siteUrl,
+	siteUrl: SITE_URL,
 	keywords:
 		'frontend, web development, javascript, typescript, react, astro, svelte, next.js, questions, courses',
 	socials: [
@@ -51,4 +51,21 @@ const siteMetadata = {
 	],
 };
 
-export { siteMetadata, siteUrl };
+type Route = {
+	name: string;
+	url: string;
+	isExternal?: boolean;
+	showOnMainNav?: boolean;
+};
+
+const ROUTES: {
+	[key: string]: {
+		name: string;
+		url: string;
+		isExternal?: boolean;
+		showOnMainNav?: boolean;
+		subRoutes?: Route[];
+	};
+}[] = [{}];
+
+export { SITE_METADATA, SITE_URL, ROUTES };
