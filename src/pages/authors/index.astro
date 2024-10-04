@@ -1,0 +1,29 @@
+---
+import AuthorCard from '@/components/author-card.astro';
+import PageHeading from '@/components/page-heading.astro';
+import SEO from '@/components/seo.astro';
+import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
+
+import { getCollection } from 'astro:content';
+
+const authors = await getCollection('authors');
+
+const title = 'Authors';
+const description = 'All the authors who craft the content on this platform.';
+---
+
+<BaseLayoutWithHeader>
+	<SEO slot='head' title={title} description={description} />
+	<div class='flex flex-col gap-4'>
+		<PageHeading title={title} description={description} />
+		<ul class='grid grid-cols-1 gap-2 sm:grid-cols-3'>
+			{
+				authors.map((author) => (
+					<li>
+						<AuthorCard {...author} />
+					</li>
+				))
+			}
+		</ul>
+	</div>
+</BaseLayoutWithHeader>
