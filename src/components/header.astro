@@ -1,0 +1,9 @@
+---
+import Logo from './logo.astro';
+import { ModeToggle } from './mode-toggle';
+---
+
+<header class='container flex items-center justify-between py-2'>
+	<Logo />
+	<ModeToggle client:load />
+</header>
