@@ -44,6 +44,7 @@ const courseChapterCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
 		title: z.string(),
+		description: z.string().optional(),
 		courseId: reference('coursesMeta'),
 		lastModifiedDate: z
 			.date()

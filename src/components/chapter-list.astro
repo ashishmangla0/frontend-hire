@@ -1,0 +1,32 @@
+---
+import { cn } from '@/utils/classnames';
+import { Button } from './ui/button';
+
+type Props = {
+	chapters: { title: string; slug: string }[];
+	currentChapterSlug: string;
+};
+
+const { chapters, currentChapterSlug } = Astro.props;
+---
+
+<nav class='space-y-4'>
+	<h2 class='font-bold'>Chapters</h2>
+	<ul>
+		{
+			chapters.map((chapter) => (
+				<li>
+					<a
+						class={cn(
+							'text-muted-foreground underline-offset-2 hover:underline',
+							currentChapterSlug === chapter.slug ? 'text-foreground' : '',
+						)}
+						href={`/courses/${chapter.slug}`}
+					>
+						{chapter.title}
+					</a>
+				</li>
+			))
+		}
+	</ul>
+</nav>

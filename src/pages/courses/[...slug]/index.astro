@@ -1,0 +1,59 @@
+---
+import ChapterList from '@/components/chapter-list.astro';
+import SEO from '@/components/seo.astro';
+import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
+import ContentLayout from '@/layouts/content-layout.astro';
+import { getEntries } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+	const courses = await getCollection('courseMeta');
+
+	const paths = courses
+		.filter((course) => course.data.isDraft !== true) // Filter out drafts
+		.flatMap((course) =>
+			course.data.chapters.map((chapter) => ({
+				params: { slug: chapter.slug }, // Generate path for each chapter
+				props: {
+					course,
+					chapter,
+				},
+			})),
+		);
+
+	return paths;
+}
+
+const { course, chapter } = Astro.props;
+
+const allChapters = await getEntries(course.data.chapters);
+
+const courseChapter =
+	allChapters.find((chapterToFind) => chapterToFind.slug === chapter.slug) ||
+	(await getEntry(chapter));
+
+const { Content } = await courseChapter.render();
+
+const getCourseChapterTitle = () => {
+	return courseChapter.data.title + ' | ' + course.data.title;
+};
+
+const title = getCourseChapterTitle();
+const description = courseChapter.data.description || course.data.description;
+---
+
+<BaseLayoutWithHeader>
+	<SEO slot='head' title={title} description={description} />
+	<ContentLayout>
+		<ChapterList
+			slot='left'
+			chapters={allChapters.map((chapter) => ({
+				title: chapter.data.title,
+				slug: chapter.slug,
+			}))}
+			currentChapterSlug={chapter.slug}
+		/>
+		<Content />
+		<aside slot='right'>Right</aside>
+	</ContentLayout>
+</BaseLayoutWithHeader>

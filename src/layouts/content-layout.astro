@@ -1,0 +1,11 @@
+<div class='flex w-full grow justify-between'>
+	<div class='w-24 flex-shrink-0'>
+		<slot name='left' />
+	</div>
+	<article class='prose grow dark:prose-invert'>
+		<slot />
+	</article>
+	<div class='w-24 flex-shrink-0 bg-red-400'>
+		<slot name='right' />
+	</div>
+</div>
