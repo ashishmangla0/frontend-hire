@@ -1,4 +1,4 @@
-import { z, defineCollection } from 'astro:content';
+import { z, defineCollection, reference } from 'astro:content';
 
 const authorCollection = defineCollection({
 	type: 'content',
@@ -19,6 +19,24 @@ const authorCollection = defineCollection({
 		}),
 });
 
+const Category = z.enum(['React', 'Svelte', 'Next.js']);
+
+const courseCollection = defineCollection({
+	type: 'content',
+	schema: ({ image }) =>
+		z.object({
+			title: z.string(),
+			category: Category.optional(),
+			description: z.string(),
+			cover: image(),
+			authors: z.array(reference('authors')),
+			publishDate: z.date(),
+			isDraft: z.boolean().optional(),
+			chapters: z.record(z.string(), z.string()), // TODO: Reference chapters directly
+		}),
+});
+
 export const collections = {
 	authors: authorCollection,
+	courses: courseCollection,
 };
