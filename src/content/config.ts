@@ -19,34 +19,41 @@ const authorCollection = defineCollection({
 		}),
 });
 
-const Category = z.enum(['React', 'Svelte', 'Next.js']);
+const CATEGORY = z.enum(['react', 'svelte', 'next']);
 
-const courseCollection = defineCollection({
+export type Category = z.infer<typeof CATEGORY>;
+
+// WHY DO I HAVE TO SEPARATE THESE TWO?
+// https://github.com/withastro/roadmap/discussions/801
+const courseMetaCollection = defineCollection({
 	type: 'data',
 	schema: ({ image }) =>
 		z.object({
 			title: z.string(),
-			category: Category.optional(),
+			category: CATEGORY,
 			description: z.string(),
 			cover: image(),
-			authors: z.array(reference('authors')),
-			publishDate: z.date(),
-			isDraft: z.boolean().optional(),
-			chapters: z.array(reference('chapters')),
+			author: reference('authors'),
+			publishDate: z.string().transform((date) => new Date(date)),
+			isDraft: z.boolean().default(false),
+			chapters: z.array(reference('courseChapters')),
 		}),
 });
 
-const chapterCollection = defineCollection({
+const courseChapterCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
 		title: z.string(),
-		courseId: reference('courses'),
-		lastModifiedDate: z.date().optional(),
+		courseId: reference('coursesMeta'),
+		lastModifiedDate: z
+			.date()
+			.transform((date) => new Date(date))
+			.optional(),
 	}),
 });
 
 export const collections = {
 	authors: authorCollection,
-	courses: courseCollection,
-	chapters: chapterCollection,
+	courseMeta: courseMetaCollection,
+	courseChapter: courseChapterCollection,
 };

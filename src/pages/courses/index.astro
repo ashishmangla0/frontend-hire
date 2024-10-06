@@ -1,8 +1,31 @@
 ---
+import CourseCard from '@/components/course-card.astro';
+import PageHeading from '@/components/page-heading.astro';
 import SEO from '@/components/seo.astro';
 import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
+import { getCollection } from 'astro:content';
+
+const title = 'Courses';
+const description =
+	'All courses in text, select ones in video. All meant to make you a better developer.';
+
+const allCourses = await getCollection('courseMeta');
 ---
 
 <BaseLayoutWithHeader>
-	<SEO slot='head' />
+	<SEO slot='head' title={title} description={description} />
+	<div class='flex flex-col gap-4'>
+		<PageHeading title={title} description={description} />
+		<ul class='grid grid-cols-1 gap-2 sm:grid-cols-3'>
+			{
+				allCourses.map((course) => (
+					<li>
+						<a href={`/courses/${course.data.chapters[0].slug}`}>
+							<CourseCard {...course} />
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</div>
 </BaseLayoutWithHeader>
