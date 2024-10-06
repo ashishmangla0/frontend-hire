@@ -22,7 +22,7 @@ const authorCollection = defineCollection({
 const Category = z.enum(['React', 'Svelte', 'Next.js']);
 
 const courseCollection = defineCollection({
-	type: 'content',
+	type: 'data',
 	schema: ({ image }) =>
 		z.object({
 			title: z.string(),
@@ -32,11 +32,21 @@ const courseCollection = defineCollection({
 			authors: z.array(reference('authors')),
 			publishDate: z.date(),
 			isDraft: z.boolean().optional(),
-			chapters: z.record(z.string(), z.string()), // TODO: Reference chapters directly
+			chapters: z.array(reference('chapters')),
 		}),
+});
+
+const chapterCollection = defineCollection({
+	type: 'content',
+	schema: z.object({
+		title: z.string(),
+		courseId: reference('courses'),
+		lastModifiedDate: z.date().optional(),
+	}),
 });
 
 export const collections = {
 	authors: authorCollection,
 	courses: courseCollection,
+	chapters: chapterCollection,
 };
