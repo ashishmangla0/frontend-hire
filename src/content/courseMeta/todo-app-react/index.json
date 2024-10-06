@@ -6,5 +6,5 @@
 	"author": "hruthik-reddy",
 	"category": "react",
 	"publishDate": "2024-04-01",
-	"chapters": ["todo-app-react/overview"]
+	"chapters": ["todo-app-react/overview", "todo-app-react/project-setup"]
 }

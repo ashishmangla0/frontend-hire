@@ -10,9 +10,9 @@ type Props = {
 const { chapters, currentChapterSlug } = Astro.props;
 ---
 
-<nav class='space-y-4'>
+<nav class='w-full space-y-4'>
 	<h2 class='font-bold'>Chapters</h2>
-	<ul>
+	<ul class='space-y-2'>
 		{
 			chapters.map((chapter) => (
 				<li>

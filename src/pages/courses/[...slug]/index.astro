@@ -32,7 +32,7 @@ const courseChapter =
 	allChapters.find((chapterToFind) => chapterToFind.slug === chapter.slug) ||
 	(await getEntry(chapter));
 
-const { Content } = await courseChapter.render();
+const { Content, headings } = await courseChapter.render();
 
 const getCourseChapterTitle = () => {
 	return courseChapter.data.title + ' | ' + course.data.title;
