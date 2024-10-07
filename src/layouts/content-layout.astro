@@ -1,13 +1,15 @@
-<div class='flex w-full grow justify-between'>
-	<div class='w-40 shrink-0'>
+<div class='flex'>
+	<aside class='hidden w-full max-w-40 md:block'>
 		<slot name='left' />
-	</div>
-	<div class='flex'>
-		<article class='prose grow dark:prose-invert'>
+	</aside>
+
+	<div class='grow'>
+		<article class='prose mx-auto dark:prose-invert'>
 			<slot />
 		</article>
-		<div class='w-40 shrink-0'>
-			<slot name='right' />
-		</div>
 	</div>
+
+	<aside class='hidden w-full max-w-40 lg:block'>
+		<slot name='right' />
+	</aside>
 </div>

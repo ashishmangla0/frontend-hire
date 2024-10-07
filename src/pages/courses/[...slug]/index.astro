@@ -1,10 +1,10 @@
 ---
 import ChapterList from '@/components/chapter-list.astro';
 import SEO from '@/components/seo.astro';
+import TOC from '@/components/toc.astro';
 import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
 import ContentLayout from '@/layouts/content-layout.astro';
-import { getEntries } from 'astro:content';
-import { getCollection, getEntry } from 'astro:content';
+import { getCollection, getEntries, getEntry } from 'astro:content';
 
 export async function getStaticPaths() {
 	const courses = await getCollection('courseMeta');
@@ -54,6 +54,6 @@ const description = courseChapter.data.description || course.data.description;
 			currentChapterSlug={chapter.slug}
 		/>
 		<Content />
-		<aside slot='right'>Right</aside>
+		<TOC slot='right' headings={headings} />
 	</ContentLayout>
 </BaseLayoutWithHeader>
