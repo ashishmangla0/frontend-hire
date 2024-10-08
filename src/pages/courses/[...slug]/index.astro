@@ -1,6 +1,7 @@
 ---
 import ChapterList from '@/components/chapter-list.astro';
 import SEO from '@/components/seo.astro';
+import TableOfContents from '@/components/table-of-contents';
 import TOC from '@/components/toc.astro';
 import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
 import ContentLayout from '@/layouts/content-layout.astro';
@@ -54,6 +55,6 @@ const description = courseChapter.data.description || course.data.description;
 			currentChapterSlug={chapter.slug}
 		/>
 		<Content />
-		<TOC slot='right' headings={headings} />
+		<TableOfContents client:load slot='right' headings={headings} />
 	</ContentLayout>
 </BaseLayoutWithHeader>
