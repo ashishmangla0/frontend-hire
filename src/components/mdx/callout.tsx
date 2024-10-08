@@ -54,13 +54,11 @@ export function Callout({ children, title, type = 'note' }: CalloutProps) {
 	const Icon = typeMap[type].icon;
 
 	return (
-		<div className='not-prose'>
-			<Alert className={calloutVariants({ variant: type })}>
-				<Icon className='size-4' />
-				<AlertTitle>{title || typeMap[type].title}</AlertTitle>
-				<AlertDescription>{children}</AlertDescription>
-			</Alert>
-		</div>
+		<Alert className={calloutVariants({ variant: type })}>
+			<Icon className='size-4' />
+			<AlertTitle>{title || typeMap[type].title}</AlertTitle>
+			<AlertDescription className='prose-p:m-2'>{children}</AlertDescription>
+		</Alert>
 	);
 }
 
