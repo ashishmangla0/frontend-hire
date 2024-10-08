@@ -10,6 +10,9 @@ import { SITE_URL } from './src/constants/site-config';
 
 import mdx from '@astrojs/mdx';
 
+import expressiveCode from 'astro-expressive-code';
+import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
+
 // https://astro.build/config
 export default defineConfig({
 	site: SITE_URL,
@@ -19,10 +22,12 @@ export default defineConfig({
 		}),
 		sitemap(),
 		react(),
+		expressiveCode({
+			plugins: [pluginLineNumbers()],
+		}),
 		mdx(),
 	],
 	markdown: {
-		gfm: true,
 		shikiConfig: {
 			wrap: true,
 		},
