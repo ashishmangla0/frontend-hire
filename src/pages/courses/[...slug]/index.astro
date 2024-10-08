@@ -2,8 +2,6 @@
 import ChapterList from '@/components/chapter-list.astro';
 import SEO from '@/components/seo.astro';
 import TableOfContents from '@/components/table-of-contents';
-import TOC from '@/components/toc.astro';
-import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
 import ContentLayout from '@/layouts/content-layout.astro';
 import { getCollection, getEntries, getEntry } from 'astro:content';
 
@@ -43,18 +41,16 @@ const title = getCourseChapterTitle();
 const description = courseChapter.data.description || course.data.description;
 ---
 
-<BaseLayoutWithHeader>
+<ContentLayout>
 	<SEO slot='head' title={title} description={description} />
-	<ContentLayout>
-		<ChapterList
-			slot='left'
-			chapters={allChapters.map((chapter) => ({
-				title: chapter.data.title,
-				slug: chapter.slug,
-			}))}
-			currentChapterSlug={chapter.slug}
-		/>
-		<Content />
-		<TableOfContents client:load slot='right' headings={headings} />
-	</ContentLayout>
-</BaseLayoutWithHeader>
+	<ChapterList
+		slot='left-sidebar'
+		chapters={allChapters.map((chapter) => ({
+			title: chapter.data.title,
+			slug: chapter.slug,
+		}))}
+		currentChapterSlug={chapter.slug}
+	/>
+	<Content />
+	<TableOfContents client:load slot='right-sidebar' headings={headings} />
+</ContentLayout>

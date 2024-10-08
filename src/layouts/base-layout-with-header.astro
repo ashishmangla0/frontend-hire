@@ -5,10 +5,14 @@ import BaseLayout from './base-layout.astro';
 
 <BaseLayout>
 	<slot name='head' />
-	<main class='flex min-h-svh flex-col gap-5'>
-		<Header />
-		<div class='container flex grow flex-col'>
+	<div class='flex min-h-svh flex-col'>
+		<!-- FIXED HEADER -->
+		<div class='fixed left-0 right-0 top-0 z-10 h-16 border-b border-b-muted'>
+			<Header />
+		</div>
+
+		<div class='container flex grow flex-col pt-16'>
 			<slot />
 		</div>
-	</main>
+	</div>
 </BaseLayout>

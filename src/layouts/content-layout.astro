@@ -1,15 +1,27 @@
-<div class='flex'>
-	<aside class='hidden w-full max-w-40 md:block'>
-		<slot name='left' />
-	</aside>
+---
+import BaseLayoutWithHeader from './base-layout-with-header.astro';
+---
 
-	<div class='grow'>
-		<article class='prose mx-auto dark:prose-invert'>
-			<slot />
-		</article>
+<BaseLayoutWithHeader>
+	<slot name='head' />
+
+	<div class='flex grow pt-5'>
+		<div class='hidden h-full w-40 md:fixed md:block'>
+			<slot name='left-sidebar' />
+		</div>
+
+		<div class='flex grow pl-40'>
+			<main class='flex grow flex-col gap-4 pb-10'>
+				<article class='prose mx-auto max-w-[70ch] grow dark:prose-invert'>
+					<slot />
+				</article>
+			</main>
+
+			<div class='relative hidden h-full w-40 pl-5 lg:block'>
+				<aside class='fixed'>
+					<slot name='right-sidebar' />
+				</aside>
+			</div>
+		</div>
 	</div>
-
-	<aside class='hidden w-full max-w-40 lg:block'>
-		<slot name='right' />
-	</aside>
-</div>
+</BaseLayoutWithHeader>
