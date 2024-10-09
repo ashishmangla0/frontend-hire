@@ -14,7 +14,9 @@ import BaseLayout from './base-layout.astro';
 		</div>
 
 		<div class='container flex grow flex-col pt-16'>
-			<slot />
+			<div class='flex grow flex-col pt-5'>
+				<slot />
+			</div>
 		</div>
 	</div>
 </BaseLayout>

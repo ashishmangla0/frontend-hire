@@ -5,27 +5,27 @@ import BaseLayoutWithHeader from './base-layout-with-header.astro';
 <BaseLayoutWithHeader>
 	<slot name='head' />
 
-	<div class='flex grow pt-5'>
-		<div class='hidden h-full w-40 md:fixed md:block'>
+	<div>
+		<div class='fixed top-20 hidden overflow-y-auto lg:block lg:w-52'>
 			<slot name='left-sidebar' />
 		</div>
 
-		<div class='flex grow md:pl-40'>
-			<main class='flex grow flex-col gap-4 pb-10'>
-				<article class='prose mx-auto max-w-[70ch] grow dark:prose-invert'>
+		<main class='lg:pl-52'>
+			<div class='flex flex-col gap-10 pb-10 lg:pl-5 xl:mr-52 xl:pr-16'>
+				<article class='prose max-w-none dark:prose-invert'>
 					<slot />
 				</article>
 
-				<div class='mx-auto w-full max-w-[70ch]'>
+				<div>
 					<slot name='footer' />
 				</div>
-			</main>
-
-			<div class='relative hidden h-full w-40 pl-5 lg:block'>
-				<aside class='fixed'>
-					<slot name='right-sidebar' />
-				</aside>
 			</div>
-		</div>
+
+			<div
+				class='fixed bottom-0 right-[max(0px,calc(50%-48rem))] top-20 hidden w-52 overflow-y-auto xl:block'
+			>
+				<slot name='right-sidebar' />
+			</div>
+		</main>
 	</div>
 </BaseLayoutWithHeader>

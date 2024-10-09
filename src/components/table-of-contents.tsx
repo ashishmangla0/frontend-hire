@@ -35,7 +35,7 @@ const TableOfContents = ({ headings }: { headings: MarkdownHeading[] }) => {
 	}, [headings]);
 
 	return (
-		<nav className='w-full space-y-4'>
+		<nav className='space-y-4'>
 			<h2 className='font-bold'>On this page</h2>
 			<ul className='space-y-2 text-sm'>
 				{headings.map((heading) => (
