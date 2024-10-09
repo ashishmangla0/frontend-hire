@@ -1,0 +1,21 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Props = {
+	next?: CollectionEntry<'courseChapters'>;
+	prev?: CollectionEntry<'courseChapters'>;
+};
+
+const { next, prev } = Astro.props;
+---
+
+<footer class='flex flex-col gap-4'>
+	<div class='flex w-full items-center justify-between'>
+		<div class='flex items-center gap-2'>
+			{prev && <a href={`/courses/${prev.slug}`}>← {prev.data.title}</a>}
+		</div>
+		<div class='flex items-center gap-2'>
+			{next && <a href={`/courses/${next.slug}`}>{next.data.title} →</a>}
+		</div>
+	</div>
+</footer>
