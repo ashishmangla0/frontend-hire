@@ -20,18 +20,18 @@ const { data: author } = await getEntry(data.author);
 ---
 
 <Card className='scale-95 overflow-hidden transition-all hover:scale-100'>
-	<Image src={data.cover} alt={data.title} />
+	<Image class='min-h-40' src={data.cover} alt={data.title} />
 	<CardHeader>
 		<CardTitle>{data.title}</CardTitle>
 		<CardDescription>{data.description}</CardDescription>
 	</CardHeader>
 	<CardFooter className='flex flex-col gap-4'>
-		<div class='flex w-full items-center justify-between'>
+		<div class='flex w-full flex-wrap items-center justify-between gap-5'>
 			<div class='flex items-center gap-2'>
 				{
 					author.picture ? (
 						<Image
-							class='size-12 rounded-full'
+							class='size-8 rounded-full md:size-12'
 							src={author.picture}
 							alt={author.name}
 						/>
