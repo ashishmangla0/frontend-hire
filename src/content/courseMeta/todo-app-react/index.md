@@ -8,4 +8,6 @@ publishDate: 2024-04-01
 chapters:
   - todo-app-react/overview
   - todo-app-react/project-setup
+  - todo-app-react/reading-tasks
+  - todo-app-react/adding-tasks
 ---

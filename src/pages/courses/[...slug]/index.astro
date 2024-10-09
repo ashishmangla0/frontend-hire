@@ -1,5 +1,6 @@
 ---
 import ChapterList from '@/components/chapter-list.astro';
+import CourseFooter from '@/components/course-footer.astro';
 import SEO from '@/components/seo.astro';
 import TableOfContents from '@/components/table-of-contents';
 import ContentLayout from '@/layouts/content-layout.astro';
@@ -27,9 +28,15 @@ const { course, chapter } = Astro.props;
 
 const allChapters = await getEntries(course.data.chapters);
 
-const courseChapter =
-	allChapters.find((chapterToFind) => chapterToFind.slug === chapter.slug) ||
-	(await getEntry(chapter));
+const currentIndex = allChapters.findIndex((c) => c.slug === chapter.slug);
+const nextChapter =
+	currentIndex < allChapters.length - 1
+		? allChapters[currentIndex + 1]
+		: undefined;
+const prevChapter =
+	currentIndex > 0 ? allChapters[currentIndex - 1] : undefined;
+
+const courseChapter = allChapters[currentIndex];
 
 const { Content, headings } = await courseChapter.render();
 
@@ -52,5 +59,6 @@ const description = courseChapter.data.description || course.data.description;
 		currentChapterSlug={chapter.slug}
 	/>
 	<Content />
+	<CourseFooter slot='footer' next={nextChapter} prev={prevChapter} />
 	<TableOfContents client:load slot='right-sidebar' headings={headings} />
 </ContentLayout>

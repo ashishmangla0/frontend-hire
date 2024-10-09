@@ -15,6 +15,10 @@ import BaseLayoutWithHeader from './base-layout-with-header.astro';
 				<article class='prose mx-auto max-w-[70ch] grow dark:prose-invert'>
 					<slot />
 				</article>
+
+				<div class='mx-auto w-full max-w-[70ch]'>
+					<slot name='footer' />
+				</div>
 			</main>
 
 			<div class='relative hidden h-full w-40 pl-5 lg:block'>
