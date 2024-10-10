@@ -10,4 +10,5 @@ chapters:
   - todo-app-react/project-setup
   - todo-app-react/reading-tasks
   - todo-app-react/adding-tasks
+  - todo-app-react/setup-testing
 ---
