@@ -1,8 +1,9 @@
 ---
+import type { CourseNavItem } from '@/types/course';
 import { cn } from '@/utils/classnames';
 
 type Props = {
-	chapters: { title: string; slug: string }[];
+	chapters: CourseNavItem[];
 	currentChapterSlug: string;
 };
 

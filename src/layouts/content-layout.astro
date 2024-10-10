@@ -5,11 +5,12 @@ import BaseLayoutWithHeader from './base-layout-with-header.astro';
 <BaseLayoutWithHeader>
 	<slot name='head' />
 
-	<div>
-		<div class='mb-4 lg:hidden'>
-			<slot name='mobile-course-menu' />
-		</div>
+	<!-- TODO: Make it fixed? -->
+	<div class='mb-4 lg:hidden'>
+		<slot name='mobile-course-menu' />
+	</div>
 
+	<div>
 		<div class='fixed top-20 hidden overflow-y-auto lg:block lg:w-52'>
 			<slot name='left-sidebar' />
 		</div>
