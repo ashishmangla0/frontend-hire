@@ -2,6 +2,7 @@
 import ThemeBlockingScript from '@/scripts/theme-blocking-script.astro';
 
 import '@/styles/globals.css';
+import { ViewTransitions } from 'astro:transitions';
 ---
 
 <html lang='en' class='scroll-pt-20 scroll-smooth'>
@@ -11,6 +12,7 @@ import '@/styles/globals.css';
 		<meta name='viewport' content='width=device-width' />
 		<meta name='generator' content={Astro.generator} />
 		<slot slot='head' name='head' />
+		<ViewTransitions />
 		<ThemeBlockingScript />
 	</head>
 	<body>

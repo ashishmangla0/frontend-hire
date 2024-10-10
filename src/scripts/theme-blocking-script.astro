@@ -7,17 +7,30 @@
 			? 'dark'
 			: 'light';
 	};
-	const isDark = getThemePreference() === 'dark';
-	document.documentElement.classList[isDark ? 'add' : 'remove']('dark');
 
-	if (typeof localStorage !== 'undefined') {
-		const observer = new MutationObserver(() => {
-			const isDark = document.documentElement.classList.contains('dark');
-			localStorage.setItem('theme', isDark ? 'dark' : 'light');
-		});
-		observer.observe(document.documentElement, {
-			attributes: true,
-			attributeFilter: ['class'],
-		});
-	}
+	const initializeTheme = () => {
+		const isDark = getThemePreference() === 'dark';
+		document.documentElement.classList.toggle('dark', isDark);
+	};
+
+	const handleViewTransition = () => {
+		document.addEventListener('astro:after-swap', initializeTheme);
+	};
+
+	const setupThemeObserver = () => {
+		if (typeof localStorage !== 'undefined') {
+			const observer = new MutationObserver(() => {
+				const isDark = document.documentElement.classList.contains('dark');
+				localStorage.setItem('theme', isDark ? 'dark' : 'light');
+			});
+			observer.observe(document.documentElement, {
+				attributes: true,
+				attributeFilter: ['class'],
+			});
+		}
+	};
+
+	initializeTheme();
+	handleViewTransition();
+	setupThemeObserver();
 </script>
