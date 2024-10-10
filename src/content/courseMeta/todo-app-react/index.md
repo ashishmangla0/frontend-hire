@@ -13,4 +13,5 @@ chapters:
   - todo-app-react/setup-testing
   - todo-app-react/writing-tests
   - todo-app-react/test-driven-development
+  - todo-app-react/refactoring
 ---
