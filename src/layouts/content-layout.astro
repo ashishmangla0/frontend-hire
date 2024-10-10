@@ -1,16 +1,15 @@
 ---
 import BaseLayoutWithHeader from './base-layout-with-header.astro';
-import Sidebar from '@/components/Sidebar';
 ---
 
 <BaseLayoutWithHeader>
 	<slot name='head' />
 
-	<Sidebar client:load>
-		<slot name='left-sidebar' />
-	</Sidebar>
-
 	<div>
+		<div class='mb-4 lg:hidden'>
+			<slot name='mobile-course-menu' />
+		</div>
+
 		<div class='fixed top-20 hidden overflow-y-auto lg:block lg:w-52'>
 			<slot name='left-sidebar' />
 		</div>
