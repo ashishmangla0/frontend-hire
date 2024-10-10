@@ -1,6 +1,7 @@
 ---
 import ChapterList from '@/components/chapter-list.astro';
 import CourseFooter from '@/components/course-footer.astro';
+import MobileCourseMenu from '@/components/mobile-course-menu';
 import SEO from '@/components/seo.astro';
 import TableOfContents from '@/components/table-of-contents';
 import ContentLayout from '@/layouts/content-layout.astro';
@@ -52,6 +53,15 @@ const description = courseChapter.data.description || course.data.description;
 	<SEO slot='head' title={title} description={description} />
 	<ChapterList
 		slot='left-sidebar'
+		chapters={allChapters.map((chapter) => ({
+			title: chapter.data.title,
+			slug: chapter.slug,
+		}))}
+		currentChapterSlug={chapter.slug}
+	/>
+	<MobileCourseMenu
+		client:load
+		slot='mobile-course-menu'
 		chapters={allChapters.map((chapter) => ({
 			title: chapter.data.title,
 			slug: chapter.slug,
