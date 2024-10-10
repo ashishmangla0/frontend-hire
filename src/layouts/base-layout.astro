@@ -12,7 +12,7 @@ import { ViewTransitions } from 'astro:transitions';
 		<meta name='viewport' content='width=device-width' />
 		<meta name='generator' content={Astro.generator} />
 		<slot slot='head' name='head' />
-		<ViewTransitions />
+		<ViewTransitions fallback='swap' />
 		<ThemeBlockingScript />
 	</head>
 	<body>

@@ -1,6 +1,5 @@
 ---
 import BaseLayoutWithHeader from './base-layout-with-header.astro';
-import { slide } from 'astro:transitions';
 ---
 
 <BaseLayoutWithHeader>
@@ -18,10 +17,7 @@ import { slide } from 'astro:transitions';
 
 		<main class='lg:pl-52'>
 			<div class='flex flex-col gap-10 pb-10 lg:pl-5 xl:mr-52 xl:pr-16'>
-				<article
-					transition:animate={slide({ duration: '0.4s' })}
-					class='prose max-w-none dark:prose-invert'
-				>
+				<article class='prose max-w-none dark:prose-invert'>
 					<slot />
 				</article>
 
