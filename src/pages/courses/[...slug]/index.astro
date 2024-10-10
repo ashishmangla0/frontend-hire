@@ -47,25 +47,24 @@ const getCourseChapterTitle = () => {
 
 const title = getCourseChapterTitle();
 const description = courseChapter.data.description || course.data.description;
+
+const chapterListForNavigation = allChapters.map((chapter) => ({
+	title: chapter.data.title,
+	slug: chapter.slug,
+}));
 ---
 
 <ContentLayout>
 	<SEO slot='head' title={title} description={description} />
 	<ChapterList
 		slot='left-sidebar'
-		chapters={allChapters.map((chapter) => ({
-			title: chapter.data.title,
-			slug: chapter.slug,
-		}))}
+		chapters={chapterListForNavigation}
 		currentChapterSlug={chapter.slug}
 	/>
 	<MobileCourseMenu
 		client:load
 		slot='mobile-course-menu'
-		chapters={allChapters.map((chapter) => ({
-			title: chapter.data.title,
-			slug: chapter.slug,
-		}))}
+		chapters={chapterListForNavigation}
 		currentChapterSlug={chapter.slug}
 	/>
 	<Content />
