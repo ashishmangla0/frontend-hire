@@ -8,6 +8,8 @@ const authorCollection = defineCollection({
 			pronouns: z.string().optional(),
 			headline: z.string().optional(),
 			picture: image().optional(),
+			order: z.number().optional(),
+			joiningDate: z.date(),
 			socials: z
 				.array(
 					z.object({

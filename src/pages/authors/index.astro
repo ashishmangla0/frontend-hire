@@ -8,6 +8,10 @@ import { getCollection } from 'astro:content';
 
 const authors = await getCollection('authors');
 
+authors.sort(
+	(a, b) => a.data.joiningDate.getTime() - b.data.joiningDate.getTime(),
+);
+
 const title = 'Authors';
 const description = 'All the authors who craft the content on this platform.';
 ---

@@ -1,7 +1,8 @@
 ---
 name: Hruthik Reddy
 pronouns: he/him
-headline: Mostly a Software Engineer. Sometimes a Nature Photographer.
+headline: Building Frontend Hire
+joiningDate: 2023-10-08
 picture: ./hruthik-reddy.webp
 socials:
   [
