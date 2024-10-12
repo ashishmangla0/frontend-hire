@@ -1,17 +1,16 @@
 ---
-import CourseCard from '@/components/course-card.astro';
 import PageHeading from '@/components/page-heading.astro';
 import SEO from '@/components/seo.astro';
+import SystemDesginCard from '@/components/system-desgin-card.astro';
 import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
 import { getCollection } from 'astro:content';
 
-const title = 'Courses';
-const description =
-	'All courses in text, select ones in video. All meant to make you a better developer.';
+const title = 'System Design';
+const description = 'Our take on Frontend System Design.';
 
-const allCourses = await getCollection('courses');
+const allSystemDesigns = await getCollection('system-design');
 
-allCourses.sort(
+allSystemDesigns.sort(
 	(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
 );
 ---
@@ -20,14 +19,12 @@ allCourses.sort(
 	<SEO slot='head' title={title} description={description} />
 	<main class='flex flex-col gap-4'>
 		<PageHeading title={title} description={description} />
-		<ul
-			class='grid grid-cols-1 gap-2 sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4'
-		>
+		<ul class='flex flex-col gap-4'>
 			{
-				allCourses.map((course) => (
+				allSystemDesigns.map((systemDesign) => (
 					<li>
-						<a href={`/courses/${course.data.chapters[0].slug}`}>
-							<CourseCard {...course} />
+						<a href={`/system-design/${systemDesign.data.chapters[0].slug}`}>
+							<SystemDesginCard {...systemDesign} />
 						</a>
 					</li>
 				))

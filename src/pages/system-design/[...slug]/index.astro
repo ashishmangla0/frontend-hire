@@ -8,15 +8,15 @@ import ContentLayout from '@/layouts/content-layout.astro';
 import { getCollection, getEntries } from 'astro:content';
 
 export async function getStaticPaths() {
-	const courses = await getCollection('courses');
+	const allSystemDesigns = await getCollection('system-design');
 
-	const paths = courses
-		.filter((course) => course.data.isDraft !== true) // Filter out drafts
-		.flatMap((course) =>
-			course.data.chapters.map((chapter) => ({
+	const paths = allSystemDesigns
+		.filter((systemDesign) => systemDesign.data.isDraft !== true) // Filter out drafts
+		.flatMap((systemDesign) =>
+			systemDesign.data.chapters.map((chapter) => ({
 				params: { slug: chapter.slug }, // Generate path for each chapter
 				props: {
-					course,
+					systemDesign,
 					chapter,
 				},
 			})),
@@ -25,9 +25,9 @@ export async function getStaticPaths() {
 	return paths;
 }
 
-const { course, chapter } = Astro.props;
+const { systemDesign, chapter } = Astro.props;
 
-const allChapters = await getEntries(course.data.chapters);
+const allChapters = await getEntries(systemDesign.data.chapters);
 
 const currentIndex = allChapters.findIndex((c) => c.slug === chapter.slug);
 const nextChapter =
@@ -45,16 +45,17 @@ const prevChapter =
 			}
 		: undefined;
 
-const courseChapter = allChapters[currentIndex];
+const systemDesignChapter = allChapters[currentIndex];
 
-const { Content, headings } = await courseChapter.render();
+const { Content, headings } = await systemDesignChapter.render();
 
-const getCourseChapterTitle = () => {
-	return courseChapter.data.title + ' | ' + course.data.title;
+const getSystemDesignChapterTitle = () => {
+	return systemDesignChapter.data.title + ' | ' + systemDesign.data.title;
 };
 
-const title = getCourseChapterTitle();
-const description = courseChapter.data.description || course.data.description;
+const title = getSystemDesignChapterTitle();
+const description =
+	systemDesignChapter.data.description || systemDesign.data.description;
 
 const chapterListForNavigation = allChapters.map((chapter) => ({
 	title: chapter.data.title,
@@ -66,21 +67,21 @@ const chapterListForNavigation = allChapters.map((chapter) => ({
 	<SEO slot='head' title={title} description={description} />
 	<ChapterList
 		slot='left-sidebar'
-		contentType='courses'
+		contentType='system-design'
 		chapters={chapterListForNavigation}
 		currentChapterSlug={chapter.slug}
 	/>
 	<MobileContentMenu
 		client:load
 		slot='mobile-menu'
-		contentType='courses'
+		contentType='system-design'
 		chapters={chapterListForNavigation}
 		currentChapterSlug={chapter.slug}
 	/>
 	<Content />
 	<ContentFooter
 		slot='footer'
-		contentType='courses'
+		contentType='system-design'
 		next={nextChapter}
 		prev={prevChapter}
 	/>

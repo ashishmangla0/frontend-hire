@@ -27,7 +27,7 @@ export type Category = z.infer<typeof CATEGORY>;
 
 // WHY DO I HAVE TO SEPARATE THESE TWO?
 // https://github.com/withastro/roadmap/discussions/801
-const coursesMetaCollection = defineCollection({
+const coursesCollection = defineCollection({
 	type: 'content',
 	schema: ({ image }) =>
 		z.object({
@@ -42,18 +42,44 @@ const coursesMetaCollection = defineCollection({
 		}),
 });
 
-const courseChaptersCollection = defineCollection({
+const courseChapterCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
 		title: z.string(),
 		description: z.string().optional(),
-		courseId: reference('courses-meta'),
+		courseId: reference('courses'),
+		lastModifiedDate: z.date().optional(),
+	}),
+});
+
+// WHY DO I HAVE TO SEPARATE THESE TWO?
+// https://github.com/withastro/roadmap/discussions/801
+const systemDesignCollection = defineCollection({
+	type: 'content',
+	schema: z.object({
+		title: z.string(),
+		description: z.string(),
+		author: reference('authors'),
+		publishDate: z.date(),
+		isDraft: z.boolean().default(false),
+		chapters: z.array(reference('system-design-chapters')),
+	}),
+});
+
+const systemDesignChapterCollection = defineCollection({
+	type: 'content',
+	schema: z.object({
+		title: z.string(),
+		description: z.string().optional(),
+		systemDesignId: reference('system-design'),
 		lastModifiedDate: z.date().optional(),
 	}),
 });
 
 export const collections = {
 	authors: authorCollection,
-	'courses-meta': coursesMetaCollection,
-	'course-chapters': courseChaptersCollection,
+	courses: coursesCollection,
+	'course-chapters': courseChapterCollection,
+	'system-design': systemDesignCollection,
+	'system-design-chapters': systemDesignChapterCollection,
 };

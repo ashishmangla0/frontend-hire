@@ -7,24 +7,26 @@ import {
 	SheetTitle,
 	SheetTrigger,
 } from '@/components/ui/sheet';
-import type { CourseNavItem } from '@/types/course';
+import type { ContentNavItem, ContentType } from '@/types/content';
 import { cn } from '@/utils/classnames';
 import { HamburgerMenuIcon } from '@radix-ui/react-icons';
 
 type Props = {
-	chapters: CourseNavItem[];
+	chapters: ContentNavItem[];
 	currentChapterSlug: string;
+	contentType: ContentType;
 };
-export default function MobileCourseMenu({
+export default function MobileContentMenu({
 	chapters,
 	currentChapterSlug,
+	contentType,
 }: Props) {
 	return (
 		<Sheet>
 			<SheetTrigger asChild>
 				<Button variant='outline'>
 					<HamburgerMenuIcon className='mr-2 size-6' />
-					<span>Course Menu</span>
+					<span>Content Menu</span>
 				</Button>
 			</SheetTrigger>
 			<SheetContent side='left'>
@@ -46,7 +48,7 @@ export default function MobileCourseMenu({
 											? 'text-foreground'
 											: '',
 									)}
-									href={`/courses/${chapter.slug}`}
+									href={`/${contentType}/${chapter.slug}`}
 								>
 									{chapter.title}
 								</a>

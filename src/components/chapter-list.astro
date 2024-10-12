@@ -1,13 +1,14 @@
 ---
-import type { CourseNavItem } from '@/types/course';
+import type { ContentNavItem, ContentType } from '@/types/content';
 import { cn } from '@/utils/classnames';
 
 type Props = {
-	chapters: CourseNavItem[];
+	chapters: ContentNavItem[];
 	currentChapterSlug: string;
+	contentType: ContentType;
 };
 
-const { chapters, currentChapterSlug } = Astro.props;
+const { chapters, currentChapterSlug, contentType } = Astro.props;
 ---
 
 <nav class='space-y-4'>
@@ -21,7 +22,7 @@ const { chapters, currentChapterSlug } = Astro.props;
 							'text-muted-foreground underline-offset-2 hover:underline',
 							currentChapterSlug === chapter.slug ? 'text-foreground' : '',
 						)}
-						href={`/courses/${chapter.slug}`}
+						href={`/${contentType}/${chapter.slug}`}
 					>
 						{chapter.title}
 					</a>

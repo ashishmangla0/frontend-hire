@@ -1,12 +1,13 @@
 ---
-import type { CollectionEntry } from 'astro:content';
+import type { ContentNavItem, ContentType } from '@/types/content';
 
 type Props = {
-	next?: CollectionEntry<'course-chapters'>;
-	prev?: CollectionEntry<'course-chapters'>;
+	next?: ContentNavItem;
+	prev?: ContentNavItem;
+	contentType: ContentType;
 };
 
-const { next, prev } = Astro.props;
+const { next, prev, contentType } = Astro.props;
 ---
 
 <footer class='flex flex-col gap-4'>
@@ -16,7 +17,7 @@ const { next, prev } = Astro.props;
 				prev && (
 					<a
 						class='flex items-center gap-2 rounded border p-4 hover:bg-muted'
-						href={`/courses/${prev.slug}`}
+						href={`/${contentType}/${prev.slug}`}
 					>
 						<svg
 							width='24'
@@ -34,7 +35,7 @@ const { next, prev } = Astro.props;
 						</svg>
 						<div class='flex flex-col items-start'>
 							<span class='text-muted-foreground'>Previous</span>
-							<span class='text-xl'>{prev.data.title}</span>
+							<span class='text-xl'>{prev.title}</span>
 						</div>
 					</a>
 				)
@@ -45,11 +46,11 @@ const { next, prev } = Astro.props;
 				next && (
 					<a
 						class='flex items-center justify-end gap-2 rounded border p-4 hover:bg-muted'
-						href={`/courses/${next.slug}`}
+						href={`/${contentType}/${next.slug}`}
 					>
 						<div class='flex flex-col items-end'>
 							<span class='text-muted-foreground'>Next</span>
-							<span class='text-xl'>{next.data.title}</span>
+							<span class='text-xl'>{next.title}</span>
 						</div>
 						<svg
 							width='24'

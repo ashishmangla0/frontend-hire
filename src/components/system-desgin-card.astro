@@ -8,10 +8,9 @@ import {
 	CardHeader,
 	CardTitle,
 } from './ui/card';
-import { CourseCategoryBadge } from './course-category-badge';
 import { Badge } from './ui/badge';
 
-type Props = CollectionEntry<'courses'>;
+type Props = CollectionEntry<'system-design'>;
 
 const { data } = Astro.props;
 
@@ -19,9 +18,8 @@ const { data: author } = await getEntry(data.author);
 ---
 
 <Card className='scale-95 overflow-hidden transition-all hover:scale-100'>
-	<Image class='min-h-40' src={data.cover} alt={data.title} />
 	<CardHeader>
-		<CardTitle>{data.title}</CardTitle>
+		<CardTitle className='text-2xl'>{data.title}</CardTitle>
 		<CardDescription>{data.description}</CardDescription>
 	</CardHeader>
 	<CardFooter className='flex flex-col gap-4'>
@@ -41,23 +39,20 @@ const { data: author } = await getEntry(data.author);
 					)
 				}
 				<p>{author.name}</p>
+				<Badge variant='outline'>
+					<span class='sr-only'>Published on: </span>{
+						data.publishDate.toLocaleDateString('en-in', {
+							year: 'numeric',
+							month: 'short',
+							day: 'numeric',
+						})
+					}</Badge
+				>
+				<Badge variant='outline'
+					>{data.chapters.length}
+					{data.chapters.length > 1 ? ' Chapters' : ' Chapter'}</Badge
+				>
 			</div>
-			<Badge variant='outline'
-				>{data.chapters.length}
-				{data.chapters.length > 1 ? ' Chapters' : ' Chapter'}</Badge
-			>
-		</div>
-		<div class='flex w-full items-center justify-between'>
-			<Badge variant='outline'>
-				<span class='sr-only'>Published on: </span>{
-					data.publishDate.toLocaleDateString('en-in', {
-						year: 'numeric',
-						month: 'short',
-						day: 'numeric',
-					})
-				}</Badge
-			>
-			<CourseCategoryBadge category={data.category} />
 		</div>
 	</CardFooter>
 </Card>
