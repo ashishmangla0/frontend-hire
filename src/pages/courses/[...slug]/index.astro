@@ -5,7 +5,7 @@ import MobileCourseMenu from '@/components/mobile-course-menu';
 import SEO from '@/components/seo.astro';
 import TableOfContents from '@/components/table-of-contents';
 import ContentLayout from '@/layouts/content-layout.astro';
-import { getCollection, getEntries, getEntry } from 'astro:content';
+import { getCollection, getEntries } from 'astro:content';
 
 export async function getStaticPaths() {
 	const courses = await getCollection('courseMeta');
