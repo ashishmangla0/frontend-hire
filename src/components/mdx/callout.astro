@@ -1,6 +1,6 @@
 ---
 import { AstroError } from 'astro/errors';
-import { cva, type VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 
 const variantMap = {
 	note: {
@@ -98,7 +98,7 @@ type Props = {
 	title?: string;
 };
 
-let { type = 'note', title } = Astro.props;
+const { type = 'note', title } = Astro.props;
 
 if (!variants.includes(type)) {
 	throw new AstroError(
