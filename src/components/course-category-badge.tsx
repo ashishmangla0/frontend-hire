@@ -1,7 +1,7 @@
-import type { Category } from '@/content/config';
 import { cn } from '@/utils/classnames';
 import { cva } from 'class-variance-authority';
 import { Badge } from './ui/badge';
+import type { Category } from '@/schema/course';
 
 type CourseCategoryProps = {
 	category: Category;
