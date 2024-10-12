@@ -1,0 +1,32 @@
+---
+import PageHeading from '@/components/page-heading.astro';
+import SEO from '@/components/seo.astro';
+import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
+import { getCollection } from 'astro:content';
+
+const allQuestions = await getCollection('questions');
+
+allQuestions.sort();
+
+const title = 'Questions';
+const description =
+	'Questions meant for real world and interview based scenarios.';
+---
+
+<BaseLayoutWithHeader>
+	<SEO slot='head' title={title} description={description} />
+	<main class='flex flex-col gap-4'>
+		<PageHeading title={title} description={description} />
+		<ul>
+			{
+				allQuestions.map((question) => (
+					<li>
+						<a href={`/questions/coding/${question.data.skill}`}>
+							{question.data.title}
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</main>
+</BaseLayoutWithHeader>
