@@ -8,7 +8,7 @@ import ContentLayout from '@/layouts/content-layout.astro';
 import { getCollection, getEntries } from 'astro:content';
 
 export async function getStaticPaths() {
-	const courses = await getCollection('courseMeta');
+	const courses = await getCollection('courses-meta');
 
 	const paths = courses
 		.filter((course) => course.data.isDraft !== true) // Filter out drafts

@@ -27,7 +27,7 @@ export type Category = z.infer<typeof CATEGORY>;
 
 // WHY DO I HAVE TO SEPARATE THESE TWO?
 // https://github.com/withastro/roadmap/discussions/801
-const courseMetaCollection = defineCollection({
+const coursesMetaCollection = defineCollection({
 	type: 'content',
 	schema: ({ image }) =>
 		z.object({
@@ -38,22 +38,22 @@ const courseMetaCollection = defineCollection({
 			author: reference('authors'),
 			publishDate: z.date(),
 			isDraft: z.boolean().default(false),
-			chapters: z.array(reference('courseChapters')),
+			chapters: z.array(reference('course-chapters')),
 		}),
 });
 
-const courseChapterCollection = defineCollection({
+const courseChaptersCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
 		title: z.string(),
 		description: z.string().optional(),
-		courseId: reference('coursesMeta'),
+		courseId: reference('courses-meta'),
 		lastModifiedDate: z.date().optional(),
 	}),
 });
 
 export const collections = {
 	authors: authorCollection,
-	courseMeta: courseMetaCollection,
-	courseChapter: courseChapterCollection,
+	'courses-meta': coursesMetaCollection,
+	'course-chapters': courseChaptersCollection,
 };
