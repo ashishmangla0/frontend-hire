@@ -18,7 +18,9 @@ const { question } = Astro.props;
 const title = `${question.data.skill} Coding Questions`;
 const description = `${question.data.skill} questions meant for real world and interview based scenarios.`;
 
-const currentSkillQuestions = await getCollection(`questions-${question.slug}`);
+const currentSkillQuestions = (
+	await getCollection(`questions-${question.slug}`)
+).filter((question) => question.data.isDraft !== true);
 ---
 
 <BaseLayoutWithHeader>

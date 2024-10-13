@@ -40,8 +40,12 @@ const reactCodingQuestionsCollection = defineCollection({
 	schema: z.object({
 		title: z.string(),
 		description: z.string(),
-		environment: z.enum(['browser', 'local']),
+		publishedOn: z.date(),
 		difficulty: z.enum(['easy', 'medium', 'hard']),
+		isDraft: z.boolean().default(false),
+		questionEmbedUrl: z.string().optional(),
+		solutionEmbedUrl: z.string().optional(),
+		author: reference('authors'),
 	}),
 });
 
@@ -54,6 +58,7 @@ const questionsCollection = defineCollection({
 		questions: z.array(reference('questions-react-coding')),
 	}),
 });
+
 export const collections = {
 	authors: authorCollection,
 	courses: coursesCollection,
