@@ -13,11 +13,11 @@ export default function QuestionLayoutWrapper({
 }) {
 	return (
 		<ResizablePanelGroup className='grow' direction='horizontal'>
-			<ResizablePanel defaultSize={300} className='flex flex-col'>
+			<ResizablePanel defaultSize={40} className='flex flex-col'>
 				{left}
 			</ResizablePanel>
-			<ResizableHandle className='w-4' withHandle />
-			<ResizablePanel defaultSize={600} className='flex flex-col'>
+			<ResizableHandle className='w-4 bg-card' withHandle />
+			<ResizablePanel defaultSize={60} className='flex flex-col'>
 				{right}
 			</ResizablePanel>
 		</ResizablePanelGroup>

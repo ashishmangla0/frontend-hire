@@ -1,10 +1,12 @@
 ---
 import Logo from '@/components/logo.astro';
 import SEO from '@/components/seo.astro';
+import ContentTabs from '@/components/content-tabs';
 import { buttonVariants } from '@/components/ui/button';
 import QuestionLayoutWrapper from '@/layouts/question-layout-wrapper';
 import QuestionLayout from '@/layouts/question-layout.astro';
 import { getCollection, getEntry } from 'astro:content';
+import { ModeToggle } from '@/components/mode-toggle';
 
 export async function getStaticPaths() {
 	const allQuestions = await getCollection('questions');
@@ -30,35 +32,44 @@ const { Content: QuestionContent } = await import(
 	`../../../../../content/${skillQuestion.collection}/${currentQuestion.slug}/_question.mdx`
 );
 
-// const { Content: SolutionContent } = await import(
-// 	`../../../../../content/${skillQuestion.collection}/${currentQuestion.slug}/_solution.mdx`
-// );
+const { Content: SolutionContent } = await import(
+	`../../../../../content/${skillQuestion.collection}/${currentQuestion.slug}/_solution.mdx`
+);
 ---
 
 <QuestionLayout>
 	<SEO slot='head' title={title} description={description} />
 
 	<header slot='header' class='flex items-center justify-between py-2'>
-		<Logo />
 		<a class={buttonVariants({ variant: 'secondary' })} href='/questions'
 			>Back to Questions</a
 		>
+		<Logo />
+		<ModeToggle client:load />
 	</header>
 
 	<QuestionLayoutWrapper client:load>
-		<div slot='left' class='flex h-0 grow flex-col overflow-y-auto bg-card p-4'>
-			<article class='prose max-w-none dark:prose-invert'>
-				<QuestionContent />
-			</article>
-		</div>
+		<ContentTabs slot='left' client:load>
+			<div slot='question' class='flex h-0 grow flex-col overflow-y-auto p-4'>
+				<article class='prose max-w-none dark:prose-invert'>
+					<QuestionContent />
+				</article>
+			</div>
 
-		<div slot='right' class='grow bg-card'>
+			<div slot='solution' class='flex h-0 grow flex-col overflow-y-auto p-4'>
+				<article class='prose max-w-none dark:prose-invert'>
+					<SolutionContent />
+				</article>
+			</div>
+		</ContentTabs>
+
+		<div slot='right' class='flex h-0 grow flex-col overflow-y-auto'>
 			<iframe
 				class='h-full'
 				width='100%'
 				height='100%'
 				title={currentQuestion.data.title}
-				src={currentQuestion.data.questionEmbedUrl}></iframe>
+				src={currentQuestion.data.embedUrl}></iframe>
 		</div>
 	</QuestionLayoutWrapper>
 </QuestionLayout>

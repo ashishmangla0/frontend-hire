@@ -43,8 +43,7 @@ const reactCodingQuestionsCollection = defineCollection({
 		publishedOn: z.date(),
 		difficulty: z.enum(['easy', 'medium', 'hard']),
 		isDraft: z.boolean().default(false),
-		questionEmbedUrl: z.string().optional(),
-		solutionEmbedUrl: z.string().optional(),
+		embedUrl: z.string().optional(),
 		author: reference('authors'),
 	}),
 });

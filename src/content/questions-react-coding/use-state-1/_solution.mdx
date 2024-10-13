@@ -17,14 +17,14 @@ First, we will update the `tasks` variable to use state, which in React is done 
 1. The current value of the state
 2. A function to update the state
 
-```js title="App.js"
+```js title="App.jsx"
 const tasks = [{ id: 1, taskName: 'First Task' }]; // [!code --]
 const [tasks, setTasks] = React.useState([{ id: 1, taskName: 'First Task' }]); // [!code ++]
 ```
 
 Next, we will wire up the `addTask` function:
 
-```js title="App.js"
+```js title="App.jsx"
 const addTask = (task) => {
 	// Write the logic // [!code --]
 	// [!code ++:13]
@@ -56,7 +56,7 @@ Then we use the `setTasks` function to update the `tasks` state with the new tas
 
 Finally, we can wire up the `deleteTask` function:
 
-```js title="App.js"
+```js title="App.jsx"
 const deleteTask = (id) => {
 	// Write the logic // [!code --]
 	setTasks(tasks.filter((task) => task.id !== id)); // [!code ++]
@@ -76,7 +76,7 @@ One of the fundamental rules of React is to not modify the state directly. Alway
 
 How do we add a `clear all` tasks feature?
 
-```js title="App.js"
+```js title="App.jsx"
 // [!code ++:4]
 const clearAllTasks = () => {
 	setTasks([]);
@@ -87,7 +87,7 @@ We use the `setTasks` function to update the `tasks` state with an empty array t
 
 Next, we just have to link the function to a UI element. We will create a button that calls the `clearAllTasks` function with some basic styling.
 
-```js title="App.js"
+```js title="App.jsx"
 // [!code ++:7]
 <button
 	onClick={clearAllTasks}
