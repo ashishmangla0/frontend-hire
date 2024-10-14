@@ -1,7 +1,7 @@
 ---
 import PageHeading from '@/components/page-heading.astro';
 import SEO from '@/components/seo.astro';
-import SystemDesginCard from '@/components/system-desgin-card.astro';
+import SystemDesignCard from '@/components/system-design-card.astro';
 import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
 import { getCollection } from 'astro:content';
 
@@ -25,8 +25,10 @@ allSystemDesigns.sort(
 			{
 				allSystemDesigns.map((systemDesign) => (
 					<li>
-						<a href={`/system-design/${systemDesign.data.chapters[0].slug}`}>
-							<SystemDesginCard {...systemDesign} />
+						<a
+							href={`/system-design/${systemDesign.slug}/${systemDesign.data.chapters[0].slug}`}
+						>
+							<SystemDesignCard {...systemDesign} />
 						</a>
 					</li>
 				))

@@ -5,7 +5,7 @@ import MobileContentMenu from '@/components/mobile-content-menu';
 import SEO from '@/components/seo.astro';
 import TableOfContents from '@/components/table-of-contents';
 import ContentLayout from '@/layouts/content-layout.astro';
-import { getCollection, getEntries } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
 	const allSystemDesigns = await getCollection('system-design');
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 		.filter((systemDesign) => systemDesign.data.isDraft !== true) // Filter out drafts
 		.flatMap((systemDesign) =>
 			systemDesign.data.chapters.map((chapter) => ({
-				params: { slug: chapter.slug }, // Generate path for each chapter
+				params: { slug: `${systemDesign.slug}/${chapter.slug}` }, // Generate path for each chapter
 				props: {
 					systemDesign,
 					chapter,
@@ -27,39 +27,40 @@ export async function getStaticPaths() {
 
 const { systemDesign, chapter } = Astro.props;
 
-const allChapters = await getEntries(systemDesign.data.chapters);
+const allChapters = systemDesign.data.chapters;
 
 const currentIndex = allChapters.findIndex((c) => c.slug === chapter.slug);
 const nextChapter =
 	currentIndex < allChapters.length - 1
 		? {
-				title: allChapters[currentIndex + 1].data.title,
-				slug: allChapters[currentIndex + 1].slug,
+				title: allChapters[currentIndex + 1].title,
+				slug: `${systemDesign.slug}/${allChapters[currentIndex + 1].slug}`,
 			}
 		: undefined;
 const prevChapter =
 	currentIndex > 0
 		? {
-				title: allChapters[currentIndex - 1].data.title,
-				slug: allChapters[currentIndex - 1].slug,
+				title: allChapters[currentIndex - 1].title,
+				slug: `${systemDesign.slug}/${allChapters[currentIndex - 1].slug}`,
 			}
 		: undefined;
 
 const systemDesignChapter = allChapters[currentIndex];
 
-const { Content, headings } = await systemDesignChapter.render();
+const { Content, getHeadings } = await import(
+	`../../../content/system-design/${systemDesign.slug}/_chapters/${systemDesignChapter.slug}.mdx`
+);
 
 const getSystemDesignChapterTitle = () => {
-	return systemDesignChapter.data.title + ' | ' + systemDesign.data.title;
+	return systemDesignChapter.title + ' | ' + systemDesign.data.title;
 };
 
 const title = getSystemDesignChapterTitle();
-const description =
-	systemDesignChapter.data.description || systemDesign.data.description;
+const description = systemDesign.data.description;
 
 const chapterListForNavigation = allChapters.map((chapter) => ({
-	title: chapter.data.title,
-	slug: chapter.slug,
+	title: chapter.title,
+	slug: `${systemDesign.slug}/${chapter.slug}`,
 }));
 ---
 
@@ -85,5 +86,5 @@ const chapterListForNavigation = allChapters.map((chapter) => ({
 		next={nextChapter}
 		prev={prevChapter}
 	/>
-	<TableOfContents client:load slot='right-sidebar' headings={headings} />
+	<TableOfContents client:load slot='right-sidebar' headings={getHeadings()} />
 </ContentLayout>

@@ -12,10 +12,3 @@ export const courseSchema = ({ image }: SchemaContext) =>
 		isDraft: z.boolean().default(false),
 		chapters: z.array(z.object({ title: z.string(), slug: z.string() })),
 	});
-
-export const courseChapterSchema = z.object({
-	title: z.string(),
-	description: z.string().optional(),
-	courseId: reference('courses'),
-	lastModifiedDate: z.date().optional(),
-});

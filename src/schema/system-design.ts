@@ -6,12 +6,5 @@ export const systemDesignSchema = z.object({
 	author: reference('authors'),
 	publishDate: z.date(),
 	isDraft: z.boolean().default(false),
-	chapters: z.array(reference('system-design-chapters')),
-});
-
-export const systemDesignChapterSchema = z.object({
-	title: z.string(),
-	description: z.string().optional(),
-	systemDesignId: reference('system-design'),
-	lastModifiedDate: z.date().optional(),
+	chapters: z.array(z.object({ title: z.string(), slug: z.string() })),
 });
