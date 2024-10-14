@@ -19,12 +19,16 @@ export default function ContentTabs({
 			</TabsList>
 			<TabsContent
 				value='question'
+				// IMPORTANT FOR ASTRO EXPRESSIVE CODE TO INITIALIZE THE COPY BUTTON PROPERLY
+				forceMount
 				className='mt-0 flex grow flex-col border-4 border-t-0 border-muted data-[state=inactive]:hidden'
 			>
 				{question}
 			</TabsContent>
 			<TabsContent
 				value='solution'
+				// IMPORTANT FOR ASTRO EXPRESSIVE CODE TO INITIALIZE THE COPY BUTTON PROPERLY
+				forceMount
 				className='mt-0 flex grow flex-col border-4 border-t-0 border-muted data-[state=inactive]:hidden'
 			>
 				{solution}
