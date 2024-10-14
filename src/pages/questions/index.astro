@@ -7,9 +7,16 @@ import { getCollection } from 'astro:content';
 
 const allQuestions = await getCollection('questions');
 
-allQuestions.sort(
-	(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
-);
+allQuestions.sort((a, b) => {
+	const difficultyOrder = {
+		easy: 1,
+		medium: 2,
+		hard: 3,
+	};
+	return (
+		difficultyOrder[a.data.difficulty] - difficultyOrder[b.data.difficulty]
+	);
+});
 
 const title = 'Questions';
 const description =
