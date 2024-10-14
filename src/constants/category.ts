@@ -1,1 +1,8 @@
-export const CATEGORIES = ['react', 'svelte', 'next', 'css', 'web'] as const;
+export const CATEGORIES = [
+	'react',
+	'svelte',
+	'next',
+	'javascript',
+	'css',
+	'web',
+] as const;
