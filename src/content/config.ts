@@ -35,26 +35,17 @@ const systemDesignChapterCollection = defineCollection({
 	schema: systemDesignChapterSchema,
 });
 
-const reactCodingQuestionsCollection = defineCollection({
-	type: 'content',
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		publishedOn: z.date(),
-		difficulty: z.enum(['easy', 'medium', 'hard']),
-		isDraft: z.boolean().default(false),
-		embedUrl: z.string().optional(),
-		author: reference('authors'),
-	}),
-});
-
 const questionsCollection = defineCollection({
 	type: 'content',
 	schema: z.object({
 		title: z.string(),
-		skill: z.enum(['react', 'next']),
+		description: z.string(),
+		skill: z.enum(['react', 'next', 'javascript', 'css', 'web']),
 		type: z.enum(['coding', 'theory']),
-		questions: z.array(reference('questions-react-coding')),
+		isDraft: z.boolean().default(false),
+		difficulty: z.enum(['easy', 'medium', 'hard']),
+		embedUrl: z.string().optional(),
+		author: reference('authors'),
 	}),
 });
 
@@ -65,5 +56,4 @@ export const collections = {
 	'system-design': systemDesignCollection,
 	'system-design-chapters': systemDesignChapterCollection,
 	questions: questionsCollection,
-	'questions-react-coding': reactCodingQuestionsCollection,
 };

@@ -21,9 +21,7 @@ const description =
 			{
 				allQuestions.map((question) => (
 					<li>
-						<a href={`/questions/coding/${question.data.skill}`}>
-							{question.data.title}
-						</a>
+						<a href={`/questions/${question.slug}`}>{question.data.title}</a>
 					</li>
 				))
 			}

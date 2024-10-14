@@ -1,39 +1,35 @@
 ---
-import Logo from '@/components/logo.astro';
-import SEO from '@/components/seo.astro';
 import ContentTabs from '@/components/content-tabs';
+import Logo from '@/components/logo.astro';
+import { ModeToggle } from '@/components/mode-toggle';
+import SEO from '@/components/seo.astro';
 import { buttonVariants } from '@/components/ui/button';
 import QuestionLayoutWrapper from '@/layouts/question-layout-wrapper';
 import QuestionLayout from '@/layouts/question-layout.astro';
-import { getCollection, getEntry } from 'astro:content';
-import { ModeToggle } from '@/components/mode-toggle';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
 	const allQuestions = await getCollection('questions');
 
-	return allQuestions.flatMap((question) => {
-		return question.data.questions.map((skillQuestion) => {
-			return {
-				params: { skill: question.data.skill, questionId: skillQuestion.slug },
-				props: { skillQuestion },
-			};
-		});
+	return allQuestions.map((question) => {
+		return {
+			params: { questionId: question.slug },
+			props: { question },
+		};
 	});
 }
 
-const { skillQuestion } = Astro.props;
+const { question } = Astro.props;
 
-const currentQuestion = await getEntry(skillQuestion);
-
-const title = currentQuestion.data.title;
-const description = currentQuestion.data.description;
+const title = question.data.title;
+const description = question.data.description;
 
 const { Content: QuestionContent } = await import(
-	`../../../../../content/${skillQuestion.collection}/${currentQuestion.slug}/_question.mdx`
+	`../../../content/questions/${question.slug}/_question.mdx`
 );
 
 const { Content: SolutionContent } = await import(
-	`../../../../../content/${skillQuestion.collection}/${currentQuestion.slug}/_solution.mdx`
+	`../../../content/questions/${question.slug}/_solution.mdx`
 );
 ---
 
@@ -68,8 +64,8 @@ const { Content: SolutionContent } = await import(
 				class='h-full'
 				width='100%'
 				height='100%'
-				title={currentQuestion.data.title}
-				src={currentQuestion.data.embedUrl}
+				title={question.data.title}
+				src={question.data.embedUrl}
 			>
 			</iframe>
 		</div>

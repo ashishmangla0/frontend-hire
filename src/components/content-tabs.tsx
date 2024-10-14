@@ -19,13 +19,13 @@ export default function ContentTabs({
 			</TabsList>
 			<TabsContent
 				value='question'
-				className='mt-0 flex grow flex-col border-4 border-t-0 data-[state=inactive]:hidden'
+				className='mt-0 flex grow flex-col border-4 border-t-0 border-muted data-[state=inactive]:hidden'
 			>
 				{question}
 			</TabsContent>
 			<TabsContent
 				value='solution'
-				className='mt-0 flex grow flex-col border-4 border-t-0 data-[state=inactive]:hidden'
+				className='mt-0 flex grow flex-col border-4 border-t-0 border-muted data-[state=inactive]:hidden'
 			>
 				{solution}
 			</TabsContent>
