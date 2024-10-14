@@ -55,11 +55,13 @@ if (question.data.type === 'coding') {
 <QuestionLayout>
 	<SEO slot='head' title={title} description={description} />
 
-	<header slot='header' class='flex items-center justify-between py-2'>
+	<header slot='header' class='relative flex items-center justify-between py-2'>
 		<a class={buttonVariants({ variant: 'secondary' })} href='/questions'
 			>Back to Questions</a
 		>
-		<Logo />
+		<div class='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+			<Logo />
+		</div>
 		<ModeToggle client:load />
 	</header>
 
