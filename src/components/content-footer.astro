@@ -35,7 +35,7 @@ const { next, prev, contentType } = Astro.props;
 						</svg>
 						<div class='flex flex-col items-start'>
 							<span class='text-muted-foreground'>Previous</span>
-							<span class='text-xl'>{prev.title}</span>
+							<span class='line-clamp-1 text-xl'>{prev.title}</span>
 						</div>
 					</a>
 				)
@@ -50,7 +50,7 @@ const { next, prev, contentType } = Astro.props;
 					>
 						<div class='flex flex-col items-end'>
 							<span class='text-muted-foreground'>Next</span>
-							<span class='text-xl'>{next.title}</span>
+							<span class='line-clamp-1 text-right text-xl'>{next.title}</span>
 						</div>
 						<svg
 							width='24'

@@ -6,14 +6,14 @@ author: hruthik-reddy
 category: next
 publishDate: 2024-05-22
 chapters:
-  - register-flow-with-e2e-tests/overview
-  - register-flow-with-e2e-tests/setup-nextjs-project
-  - register-flow-with-e2e-tests/setup-supabase-project
-  - register-flow-with-e2e-tests/building-landing-page
-  - register-flow-with-e2e-tests/building-login-page
-  - register-flow-with-e2e-tests/e2e-testing-login
-  - register-flow-with-e2e-tests/building-register-page
-  - register-flow-with-e2e-tests/e2e-testing-register
-  - register-flow-with-e2e-tests/bonus-saving-auth-state
-  - register-flow-with-e2e-tests/summary
+  - { title: 'Overview', slug: overview }
+  - { title: 'Setup Next.js Project', slug: setup-nextjs-project }
+  - { title: 'Setup Supabase Project', slug: setup-supabase-project }
+  - { title: 'Building Landing Page', slug: building-landing-page }
+  - { title: 'Building Login Page', slug: building-login-page }
+  - { title: 'E2E Testing Login', slug: e2e-testing-login }
+  - { title: 'Building Register Page', slug: building-register-page }
+  - { title: 'E2E Testing Register', slug: e2e-testing-register }
+  - { title: 'Bonus: Saving Auth State', slug: bonus-saving-auth-state }
+  - { title: 'Summary', slug: summary }
 ---

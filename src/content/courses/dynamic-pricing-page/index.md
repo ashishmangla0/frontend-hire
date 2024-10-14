@@ -6,9 +6,15 @@ author: hruthik-reddy
 category: next
 publishDate: 2024-06-21
 chapters:
-  - dynamic-pricing-page/overview
-  - dynamic-pricing-page/setup-pages-router
-  - dynamic-pricing-page/rendering-strategies-pages-router
-  - dynamic-pricing-page/rendering-strategies-app-router
-  - dynamic-pricing-page/summary
+  - { title: 'Overview', slug: overview }
+  - { title: 'Setting Up Pages Router', slug: setup-pages-router }
+  - {
+      title: 'Rendering Strategies (Pages Router)',
+      slug: rendering-strategies-pages-router,
+    }
+  - {
+      title: 'Rendering Strategies (App Router)',
+      slug: rendering-strategies-app-router,
+    }
+  - { title: 'Summary', slug: summary }
 ---

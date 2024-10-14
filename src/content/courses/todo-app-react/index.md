@@ -6,14 +6,14 @@ author: hruthik-reddy
 category: react
 publishDate: 2024-04-01
 chapters:
-  - todo-app-react/overview
-  - todo-app-react/project-setup
-  - todo-app-react/reading-tasks
-  - todo-app-react/adding-tasks
-  - todo-app-react/setup-testing
-  - todo-app-react/writing-tests
-  - todo-app-react/test-driven-development
-  - todo-app-react/refactoring
-  - todo-app-react/component-composition
-  - todo-app-react/summary
+  - { title: 'Overview', slug: overview }
+  - { title: 'Project Setup for React', slug: project-setup }
+  - { title: 'Reading Tasks', slug: reading-tasks }
+  - { title: 'Adding Tasks', slug: adding-tasks }
+  - { title: 'Setup Testing', slug: setup-testing }
+  - { title: 'Writing Tests', slug: writing-tests }
+  - { title: 'Test-Driven Development (TDD)', slug: test-driven-development }
+  - { title: 'Refactoring', slug: refactoring }
+  - { title: 'Component Composition', slug: component-composition }
+  - { title: 'Summary', slug: summary }
 ---

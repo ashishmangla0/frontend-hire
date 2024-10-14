@@ -5,7 +5,7 @@ import MobileContentMenu from '@/components/mobile-content-menu';
 import SEO from '@/components/seo.astro';
 import TableOfContents from '@/components/table-of-contents';
 import ContentLayout from '@/layouts/content-layout.astro';
-import { getCollection, getEntries } from 'astro:content';
+import { getCollection } from 'astro:content';
 
 export async function getStaticPaths() {
 	const courses = await getCollection('courses');
@@ -14,7 +14,7 @@ export async function getStaticPaths() {
 		.filter((course) => course.data.isDraft !== true) // Filter out drafts
 		.flatMap((course) =>
 			course.data.chapters.map((chapter) => ({
-				params: { slug: chapter.slug }, // Generate path for each chapter
+				params: { slug: `${course.slug}/${chapter.slug}` }, // Generate path for each chapter
 				props: {
 					course,
 					chapter,
@@ -27,38 +27,40 @@ export async function getStaticPaths() {
 
 const { course, chapter } = Astro.props;
 
-const allChapters = await getEntries(course.data.chapters);
+const allChapters = course.data.chapters;
 
 const currentIndex = allChapters.findIndex((c) => c.slug === chapter.slug);
 const nextChapter =
 	currentIndex < allChapters.length - 1
 		? {
-				title: allChapters[currentIndex + 1].data.title,
-				slug: allChapters[currentIndex + 1].slug,
+				title: allChapters[currentIndex + 1].title,
+				slug: `${course.slug}/${allChapters[currentIndex + 1].slug}`,
 			}
 		: undefined;
 const prevChapter =
 	currentIndex > 0
 		? {
-				title: allChapters[currentIndex - 1].data.title,
-				slug: allChapters[currentIndex - 1].slug,
+				title: allChapters[currentIndex - 1].title,
+				slug: `${course.slug}/${allChapters[currentIndex - 1].slug}`,
 			}
 		: undefined;
 
 const courseChapter = allChapters[currentIndex];
 
-const { Content, headings } = await courseChapter.render();
+const { Content, getHeadings } = await import(
+	`../../../content/courses/${course.slug}/_chapters/${courseChapter.slug}.mdx`
+);
 
 const getCourseChapterTitle = () => {
-	return courseChapter.data.title + ' | ' + course.data.title;
+	return courseChapter.title + ' | ' + course.data.title;
 };
 
 const title = getCourseChapterTitle();
-const description = courseChapter.data.description || course.data.description;
+const description = course.data.description;
 
 const chapterListForNavigation = allChapters.map((chapter) => ({
-	title: chapter.data.title,
-	slug: chapter.slug,
+	title: chapter.title,
+	slug: `${course.slug}/${chapter.slug}`,
 }));
 ---
 
@@ -84,5 +86,5 @@ const chapterListForNavigation = allChapters.map((chapter) => ({
 		next={nextChapter}
 		prev={prevChapter}
 	/>
-	<TableOfContents client:load slot='right-sidebar' headings={headings} />
+	<TableOfContents client:load slot='right-sidebar' headings={getHeadings()} />
 </ContentLayout>

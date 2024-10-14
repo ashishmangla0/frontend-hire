@@ -20,7 +20,7 @@ const { data: author } = await getEntry(data.author);
 
 <Card className='scale-95 overflow-hidden transition-all hover:scale-100'>
 	<Image class='min-h-40' src={data.cover} alt={data.title} />
-	<CardHeader>
+	<CardHeader className='pb-4'>
 		<CardTitle>{data.title}</CardTitle>
 		<CardDescription>{data.description}</CardDescription>
 	</CardHeader>

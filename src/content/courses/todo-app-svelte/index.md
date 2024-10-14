@@ -6,14 +6,14 @@ author: hruthik-reddy
 category: react
 publishDate: 2024-05-30
 chapters:
-  - todo-app-svelte/overview
-  - todo-app-svelte/project-setup
-  - todo-app-svelte/reading-tasks
-  - todo-app-svelte/adding-tasks
-  - todo-app-svelte/setup-testing
-  - todo-app-svelte/writing-tests
-  - todo-app-svelte/test-driven-development
-  - todo-app-svelte/refactoring
-  - todo-app-svelte/component-composition
-  - todo-app-svelte/summary
+  - { title: 'Overview', slug: overview }
+  - { title: 'Project Setup for React', slug: project-setup }
+  - { title: 'Reading Tasks', slug: reading-tasks }
+  - { title: 'Adding Tasks', slug: adding-tasks }
+  - { title: 'Setup Testing', slug: setup-testing }
+  - { title: 'Writing Tests', slug: writing-tests }
+  - { title: 'Test-Driven Development (TDD)', slug: test-driven-development }
+  - { title: 'Refactoring', slug: refactoring }
+  - { title: 'Component Composition', slug: component-composition }
+  - { title: 'Summary', slug: summary }
 ---

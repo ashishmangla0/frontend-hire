@@ -6,14 +6,17 @@ author: hruthik-reddy
 category: react
 publishDate: 2024-04-19
 chapters:
-  - stackpack/overview
-  - stackpack/project-setup
-  - stackpack/building-layout
-  - stackpack/think-about-what-to-build-next
-  - stackpack/building-code-editor
-  - stackpack/webcontainer-api
-  - stackpack/building-terminal
-  - stackpack/building-preview
-  - stackpack/deploying-to-production
-  - stackpack/summary
+  - { title: 'Overview', slug: overview }
+  - { title: 'Project Setup for React', slug: project-setup }
+  - { title: 'Building Layout', slug: building-layout }
+  - {
+      title: 'Think About What To Build Next',
+      slug: think-about-what-to-build-next,
+    }
+  - { title: 'Building Code Editor', slug: building-code-editor }
+  - { title: 'WebContainer API', slug: webcontainer-api }
+  - { title: 'Building Terminal', slug: building-terminal }
+  - { title: 'Building Preview', slug: building-preview }
+  - { title: 'Deploying To Production', slug: deploying-to-production }
+  - { title: 'Summary', slug: summary }
 ---

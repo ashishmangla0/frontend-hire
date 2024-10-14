@@ -28,7 +28,7 @@ allCourses.sort(
 			{
 				allCourses.map((course) => (
 					<li>
-						<a href={`/courses/${course.data.chapters[0].slug}`}>
+						<a href={`/courses/${course.slug}/${course.data.chapters[0].slug}`}>
 							<CourseCard {...course} />
 						</a>
 					</li>
