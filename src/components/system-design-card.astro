@@ -1,6 +1,8 @@
 ---
+import { isNew } from '@/utils/date';
 import { Image } from 'astro:assets';
 import { getEntry, type CollectionEntry } from 'astro:content';
+import { Badge } from './ui/badge';
 import {
 	Card,
 	CardDescription,
@@ -8,7 +10,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from './ui/card';
-import { Badge } from './ui/badge';
 
 type Props = CollectionEntry<'system-design'>;
 
@@ -28,12 +29,12 @@ const { data: author } = await getEntry(data.author);
 				{
 					author.picture ? (
 						<Image
-							class='size-8 rounded-full md:size-12'
+							class='size-8 rounded-full'
 							src={author.picture}
 							alt={author.name}
 						/>
 					) : (
-						<div class='flex size-12 flex-col items-center justify-center rounded-full bg-primary text-white'>
+						<div class='flex size-8 flex-col items-center justify-center rounded-full bg-primary text-white'>
 							{author.name.charAt(0).toUpperCase()}
 						</div>
 					)
@@ -52,6 +53,11 @@ const { data: author } = await getEntry(data.author);
 					>{data.chapters.length}
 					{data.chapters.length > 1 ? ' Chapters' : ' Chapter'}</Badge
 				>
+				{
+					isNew(data.publishDate) && (
+						<Badge className='motion-safe:animate-pulse'>New</Badge>
+					)
+				}
 			</div>
 		</div>
 	</CardFooter>

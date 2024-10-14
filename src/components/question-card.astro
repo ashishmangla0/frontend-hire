@@ -1,6 +1,9 @@
 ---
+import { isNew } from '@/utils/date';
 import { Image } from 'astro:assets';
 import { getEntry, type CollectionEntry } from 'astro:content';
+import CategoryBadge from './category-badge.astro';
+import { Badge } from './ui/badge';
 import {
 	Card,
 	CardDescription,
@@ -8,8 +11,6 @@ import {
 	CardHeader,
 	CardTitle,
 } from './ui/card';
-import CategoryBadge from './category-badge.astro';
-import { Badge } from './ui/badge';
 
 type Props = CollectionEntry<'questions'>;
 
@@ -22,7 +23,7 @@ const { data: author } = await getEntry(data.author);
 	className='relative scale-95 overflow-hidden transition-all hover:scale-100'
 >
 	<Badge
-		variant={data.type === 'coding' ? 'default' : 'secondary'}
+		variant={data.type === 'coding' ? 'secondary' : 'outline'}
 		className='absolute right-0 top-0 rounded-none capitalize'
 		>{data.type} Question</Badge
 	>
@@ -48,7 +49,14 @@ const { data: author } = await getEntry(data.author);
 				}
 				<p class='text-sm'>{author.name}</p>
 			</div>
-			<CategoryBadge category={data.skill} />
+			<div class='flex items-center gap-2'>
+				{
+					isNew(data.publishDate) && (
+						<Badge className='motion-safe:animate-pulse'>New</Badge>
+					)
+				}
+				<CategoryBadge category={data.skill} />
+			</div>
 		</div>
 	</CardFooter>
 </Card>
