@@ -4,6 +4,7 @@ import Logo from '@/components/logo.astro';
 import { ModeToggle } from '@/components/mode-toggle';
 import SEO from '@/components/seo.astro';
 import { buttonVariants } from '@/components/ui/button';
+import ProseLayout from '@/layouts/prose-layout.astro';
 import QuestionLayoutWrapper from '@/layouts/question-layout-wrapper';
 import QuestionLayout from '@/layouts/question-layout.astro';
 import { getCollection } from 'astro:content';
@@ -68,9 +69,9 @@ if (question.data.type === 'coding') {
 	{
 		question.data.type === 'theory' && (
 			<div class='flex h-0 grow flex-col overflow-y-auto rounded p-4'>
-				<article class='prose mx-auto dark:prose-invert'>
+				<ProseLayout class='mx-auto max-w-[65ch]'>
 					<TheoryContent />
-				</article>
+				</ProseLayout>
 			</div>
 		)
 	}
@@ -83,18 +84,18 @@ if (question.data.type === 'coding') {
 						slot='question'
 						class='flex h-0 grow flex-col overflow-y-auto p-4'
 					>
-						<article class='prose max-w-none dark:prose-invert'>
+						<ProseLayout>
 							<QuestionContent />
-						</article>
+						</ProseLayout>
 					</div>
 
 					<div
 						slot='solution'
 						class='flex h-0 grow flex-col overflow-y-auto p-4'
 					>
-						<article class='prose max-w-none dark:prose-invert'>
+						<ProseLayout>
 							<SolutionContent />
-						</article>
+						</ProseLayout>
 					</div>
 				</ContentTabs>
 
