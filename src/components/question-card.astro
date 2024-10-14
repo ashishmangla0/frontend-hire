@@ -11,6 +11,7 @@ import {
 	CardHeader,
 	CardTitle,
 } from './ui/card';
+import QuestionCardDifficultyIndicator from './question-card-difficulty-indicator.astro';
 
 type Props = CollectionEntry<'questions'>;
 
@@ -22,6 +23,7 @@ const { data: author } = await getEntry(data.author);
 <Card
 	className='relative scale-95 overflow-hidden transition-all hover:scale-100'
 >
+	<QuestionCardDifficultyIndicator difficulty={data.difficulty} />
 	<Badge
 		variant={data.type === 'coding' ? 'secondary' : 'outline'}
 		className='absolute right-0 top-0 rounded-none capitalize'
