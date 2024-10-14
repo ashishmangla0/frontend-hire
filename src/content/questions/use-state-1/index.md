@@ -4,7 +4,7 @@ description: This question revolves around the most frequently used hook in Reac
 skill: react
 type: coding
 difficulty: easy
-publishedOn: 2024-07-01
+publishDate: 2024-07-01
 embedUrl: https://stackblitz.com/edit/vitejs-vite-tlcjcq?ctl=1&embed=1&file=src%2FApp.jsx
 author: hruthik-reddy
 ---

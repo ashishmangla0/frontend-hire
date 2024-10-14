@@ -1,0 +1,40 @@
+---
+import { cn } from '@/utils/classnames';
+import { AstroError } from 'astro/errors';
+import { cva } from 'class-variance-authority';
+import { Badge } from './ui/badge';
+import type { Category } from '@/types/content';
+import { CATEGORIES } from '@/constants/category';
+
+const categoryVariants = cva('', {
+	variants: {
+		variant: {
+			svelte:
+				'bg-[hsl(15deg,100%,20%)] text-[hsl(15deg,100%,80%)] hover:bg-[hsl(15deg,100%,30%)]',
+			react:
+				'bg-[hsl(193deg,95%,20%)] text-[hsl(193deg,95%,80%)] hover:bg-[hsl(193deg,95%,30%)]',
+			next: 'bg-[hsl(0deg,0%,20%)] text-[hsl(0deg,0%,80%)] hover:bg-[hsl(0deg,0%,30%)]',
+			css: 'bg-[hsl(0deg,0%,20%)] text-[hsl(0deg,0%,80%)] hover:bg-[hsl(0deg,0%,30%)]',
+			web: 'bg-[hsl(0deg,0%,20%)] text-[hsl(0deg,0%,80%)] hover:bg-[hsl(0deg,0%,30%)]',
+		},
+	},
+});
+
+type Props = {
+	category: Category;
+};
+
+const { category } = Astro.props;
+
+if (!CATEGORIES.includes(category)) {
+	throw new AstroError(
+		'Invalid `type` prop passed to the `<Aside>` component.\n',
+		`Received: ${JSON.stringify(category)}\n` +
+			`Expected one of ${CATEGORIES.map((i) => JSON.stringify(i)).join(', ')}`,
+	);
+}
+---
+
+<Badge className={cn(categoryVariants({ variant: category }))}>
+	{category}
+</Badge>

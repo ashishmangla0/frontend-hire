@@ -1,10 +1,11 @@
 import { authorSchema } from '@/schema/author';
 import { courseChapterSchema, courseSchema } from '@/schema/course';
+import { questionSchema } from '@/schema/question';
 import {
 	systemDesignChapterSchema,
 	systemDesignSchema,
 } from '@/schema/system-design';
-import { defineCollection, reference, z } from 'astro:content';
+import { defineCollection } from 'astro:content';
 
 const authorCollection = defineCollection({
 	type: 'content',
@@ -37,16 +38,7 @@ const systemDesignChapterCollection = defineCollection({
 
 const questionsCollection = defineCollection({
 	type: 'content',
-	schema: z.object({
-		title: z.string(),
-		description: z.string(),
-		skill: z.enum(['react', 'next', 'javascript', 'css', 'web']),
-		type: z.enum(['coding', 'theory']),
-		isDraft: z.boolean().default(false),
-		difficulty: z.enum(['easy', 'medium', 'hard']),
-		embedUrl: z.string().optional(),
-		author: reference('authors'),
-	}),
+	schema: questionSchema,
 });
 
 export const collections = {

@@ -8,8 +8,8 @@ import {
 	CardHeader,
 	CardTitle,
 } from './ui/card';
-import { CourseCategoryBadge } from './course-category-badge';
 import { Badge } from './ui/badge';
+import CategoryBadge from './category-badge.astro';
 
 type Props = CollectionEntry<'courses'>;
 
@@ -57,7 +57,7 @@ const { data: author } = await getEntry(data.author);
 					})
 				}</Badge
 			>
-			<CourseCategoryBadge category={data.category} />
+			<CategoryBadge category={data.category} />
 		</div>
 	</CardFooter>
 </Card>
