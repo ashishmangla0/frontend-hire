@@ -17,17 +17,16 @@ First, we will update the `tasks` variable to use state, which in React is done 
 1. The current value of the state
 2. A function to update the state
 
-```js title="App.jsx"
-const tasks = [{ id: 1, taskName: 'First Task' }]; // [!code --]
-const [tasks, setTasks] = React.useState([{ id: 1, taskName: 'First Task' }]); // [!code ++]
+```js title="App.jsx" del={1} ins={2}
+const tasks = [{ id: 1, taskName: 'First Task' }];
+const [tasks, setTasks] = React.useState([{ id: 1, taskName: 'First Task' }]);
 ```
 
 Next, we will wire up the `addTask` function:
 
-```js title="App.jsx"
+```js title="App.jsx" del={2} ins={3-14}
 const addTask = (task) => {
-	// Write the logic // [!code --]
-	// [!code ++:13]
+	// Write the logic
 	const trimmedTask = task.trim();
 
 	if (!trimmedTask) {
@@ -56,10 +55,10 @@ Then we use the `setTasks` function to update the `tasks` state with the new tas
 
 Finally, we can wire up the `deleteTask` function:
 
-```js title="App.jsx"
+```js title="App.jsx" del={2} ins={3}
 const deleteTask = (id) => {
-	// Write the logic // [!code --]
-	setTasks(tasks.filter((task) => task.id !== id)); // [!code ++]
+	// Write the logic
+	setTasks(tasks.filter((task) => task.id !== id));
 };
 ```
 
@@ -76,8 +75,7 @@ One of the fundamental rules of React is to not modify the state directly. Alway
 
 How do we add a `clear all` tasks feature?
 
-```js title="App.jsx"
-// [!code ++:4]
+```js title="App.jsx" ins={1-3}
 const clearAllTasks = () => {
 	setTasks([]);
 };
@@ -87,8 +85,7 @@ We use the `setTasks` function to update the `tasks` state with an empty array t
 
 Next, we just have to link the function to a UI element. We will create a button that calls the `clearAllTasks` function with some basic styling.
 
-```js title="App.jsx"
-// [!code ++:7]
+```js title="App.jsx" ins={1-6}
 <button
 	onClick={clearAllTasks}
 	className='border border-red-500 bg-red-500 p-2 text-white'
