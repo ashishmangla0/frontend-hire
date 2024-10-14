@@ -1,0 +1,54 @@
+---
+import { Image } from 'astro:assets';
+import { getEntry, type CollectionEntry } from 'astro:content';
+import {
+	Card,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from './ui/card';
+import CategoryBadge from './category-badge.astro';
+import { Badge } from './ui/badge';
+
+type Props = CollectionEntry<'questions'>;
+
+const { data } = Astro.props;
+
+const { data: author } = await getEntry(data.author);
+---
+
+<Card
+	className='relative scale-95 overflow-hidden transition-all hover:scale-100'
+>
+	<Badge
+		variant={data.type === 'coding' ? 'default' : 'secondary'}
+		className='absolute right-0 top-0 rounded-none capitalize'
+		>{data.type} Question</Badge
+	>
+	<CardHeader className='pb-4'>
+		<CardTitle>{data.title}</CardTitle>
+		<CardDescription>{data.description}</CardDescription>
+	</CardHeader>
+	<CardFooter>
+		<div class='flex w-full flex-wrap items-center justify-between gap-5'>
+			<div class='flex items-center gap-2'>
+				{
+					author.picture ? (
+						<Image
+							class='size-7 rounded-full'
+							src={author.picture}
+							alt={author.name}
+						/>
+					) : (
+						<div class='flex size-7 flex-col items-center justify-center rounded-full bg-primary text-white'>
+							{author.name.charAt(0).toUpperCase()}
+						</div>
+					)
+				}
+				<p class='text-sm'>{author.name}</p>
+			</div>
+			<CategoryBadge category={data.skill} />
+		</div>
+	</CardFooter>
+</Card>

@@ -1,0 +1,73 @@
+---
+import ContentTabs from '@/components/content-tabs';
+import Logo from '@/components/logo.astro';
+import { ModeToggle } from '@/components/mode-toggle';
+import SEO from '@/components/seo.astro';
+import { buttonVariants } from '@/components/ui/button';
+import QuestionLayoutWrapper from '@/layouts/question-layout-wrapper';
+import QuestionLayout from '@/layouts/question-layout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	const allQuestions = await getCollection('questions');
+
+	return allQuestions.map((question) => {
+		return {
+			params: { questionId: question.slug },
+			props: { question },
+		};
+	});
+}
+
+const { question } = Astro.props;
+
+const title = question.data.title;
+const description = question.data.description;
+
+const { Content: QuestionContent } = await import(
+	`../../../content/questions/${question.slug}/_question.mdx`
+);
+
+const { Content: SolutionContent } = await import(
+	`../../../content/questions/${question.slug}/_solution.mdx`
+);
+---
+
+<QuestionLayout>
+	<SEO slot='head' title={title} description={description} />
+
+	<header slot='header' class='flex items-center justify-between py-2'>
+		<a class={buttonVariants({ variant: 'secondary' })} href='/questions'
+			>Back to Questions</a
+		>
+		<Logo />
+		<ModeToggle client:load />
+	</header>
+
+	<QuestionLayoutWrapper client:load>
+		<ContentTabs slot='left' client:load>
+			<div slot='question' class='flex h-0 grow flex-col overflow-y-auto p-4'>
+				<article class='prose max-w-none dark:prose-invert'>
+					<QuestionContent />
+				</article>
+			</div>
+
+			<div slot='solution' class='flex h-0 grow flex-col overflow-y-auto p-4'>
+				<article class='prose max-w-none dark:prose-invert'>
+					<SolutionContent />
+				</article>
+			</div>
+		</ContentTabs>
+
+		<div slot='right' class='flex h-0 grow flex-col overflow-y-auto'>
+			<iframe
+				class='h-full'
+				width='100%'
+				height='100%'
+				title={question.data.title}
+				src={question.data.embedUrl}
+			>
+			</iframe>
+		</div>
+	</QuestionLayoutWrapper>
+</QuestionLayout>

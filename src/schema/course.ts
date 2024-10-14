@@ -1,13 +1,10 @@
+import { CATEGORIES } from '@/constants/category';
 import { reference, z, type SchemaContext } from 'astro:content';
-
-const CATEGORY = z.enum(['react', 'svelte', 'next']);
-
-export type Category = z.infer<typeof CATEGORY>;
 
 export const courseSchema = ({ image }: SchemaContext) =>
 	z.object({
 		title: z.string(),
-		category: CATEGORY,
+		category: z.enum(CATEGORIES),
 		description: z.string(),
 		cover: image(),
 		author: reference('authors'),
