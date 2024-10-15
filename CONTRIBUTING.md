@@ -14,8 +14,8 @@ By participating in this project, you are expected to uphold our [Code of Conduc
 
 ## Content Contribution Guide
 
-> [!NOTE] Content License
-> By contributing content to the platform, you agree that your contributions will be licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0). This allows others to share, copy, redistribute, and adapt your work, as long as they give appropriate credit to you as the original creator.
+> [!NOTE]
+> By contributing content to the platform, you agree that your contributions will be licensed under the [CC BY 4.0](https://creativecommons.org/licenses/by/4.0/). This allows others to share, copy, redistribute, and adapt your work, as long as they give appropriate credit to you as the original creator.
 
 We're always looking for high-quality content to help frontend developers learn and grow. Here's how you can contribute content:
 
