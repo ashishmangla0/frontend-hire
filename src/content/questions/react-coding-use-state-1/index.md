@@ -5,6 +5,6 @@ skill: react
 type: coding
 difficulty: easy
 publishDate: 2024-07-01
-embedUrl: https://stackblitz.com/edit/vitejs-vite-tlcjcq?ctl=1&embed=1&file=src%2FApp.jsx&hideNavigation=1&theme=dark
+embedUrl: https://stackblitz.com/edit/vitejs-vite-tlcjcq?ctl=1&embed=1&file=src%2FApp.jsx&theme=dark
 author: hruthik-reddy
 ---

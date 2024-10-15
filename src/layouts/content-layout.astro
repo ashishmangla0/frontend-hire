@@ -1,5 +1,6 @@
 ---
 import BaseLayoutWithHeader from './base-layout-with-header.astro';
+import ProseLayout from './prose-layout.astro';
 ---
 
 <BaseLayoutWithHeader>
@@ -17,9 +18,9 @@ import BaseLayoutWithHeader from './base-layout-with-header.astro';
 
 		<main class='lg:pl-52'>
 			<div class='flex flex-col gap-10 lg:pl-5 xl:mr-52 xl:pr-16'>
-				<article class='prose max-w-none dark:prose-invert'>
+				<ProseLayout>
 					<slot />
-				</article>
+				</ProseLayout>
 
 				<div>
 					<slot name='footer' />
