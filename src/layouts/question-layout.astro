@@ -2,8 +2,9 @@
 import BaseLayout from './base-layout.astro';
 ---
 
+<slot name='head' />
+
 <BaseLayout>
-	<slot name='head' />
 	<main class='flex min-h-svh flex-col gap-2'>
 		<div class='px-2 md:px-5'>
 			<slot name='header' />

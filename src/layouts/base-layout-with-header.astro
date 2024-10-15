@@ -3,8 +3,9 @@ import Header from '@/components/header.astro';
 import BaseLayout from './base-layout.astro';
 ---
 
+<slot name='head' />
+
 <BaseLayout>
-	<slot name='head' />
 	<div class='flex min-h-svh flex-col'>
 		<!-- FIXED HEADER -->
 		<div
