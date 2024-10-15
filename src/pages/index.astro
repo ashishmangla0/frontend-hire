@@ -1,8 +1,32 @@
 ---
 import SEO from '@/components/seo.astro';
+import { buttonVariants } from '@/components/ui/button';
 import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
 ---
 
 <BaseLayoutWithHeader>
 	<SEO slot='head' />
+
+	<main class='flex grow flex-col'>
+		<section
+			class='flex grow flex-col items-center justify-center gap-4 text-center'
+		>
+			<div class='flex flex-col gap-2'>
+				<a href='/blog'>Read More</a>
+				<h1 class='text-3xl font-black'>
+					Practice Core Frontend Skills For Interviews And Real World
+				</h1>
+				<h2 class='text-xl font-bold'>Work on Practical Stuff And Get Hired</h2>
+			</div>
+
+			<div class='flex gap-4'>
+				<a class={buttonVariants({ variant: 'default' })} href='/questions'
+					>Practice</a
+				>
+				<a class={buttonVariants({ variant: 'secondary' })} href='/#'
+					>Contribute</a
+				>
+			</div>
+		</section>
+	</main>
 </BaseLayoutWithHeader>
