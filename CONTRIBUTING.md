@@ -3,7 +3,6 @@
 Thank you for your interest in contributing to our open-source frontend platform! We welcome contributions from the community, whether it's new content, bug fixes, or feature enhancements. This guide will help you get started with the contribution process.
 
 ## Table of Contents
-
 1. [Code of Conduct](#code-of-conduct)
 2. [Content Contribution Guide](#content-contribution-guide)
 3. [Platform Contribution Guide](#platform-contribution-guide)
@@ -11,10 +10,12 @@ Thank you for your interest in contributing to our open-source frontend platform
 5. [Community](#community)
 
 ## Code of Conduct
-
 By participating in this project, you are expected to uphold our [Code of Conduct](CODE_OF_CONDUCT.md). Please read it before contributing.
 
 ## Content Contribution Guide
+
+> [!NOTE] Content License
+> By contributing content to the platform, you agree that your contributions will be licensed under the Creative Commons Attribution 4.0 International License (CC BY 4.0). This allows others to share, copy, redistribute, and adapt your work, as long as they give appropriate credit to you as the original creator.
 
 We're always looking for high-quality content to help frontend developers learn and grow. Here's how you can contribute content:
 
@@ -43,7 +44,6 @@ We're always looking for high-quality content to help frontend developers learn 
    - Link the related content request issue in your pull request description.
 
 ## Platform Contribution Guide
-
 If you're interested in improving the platform itself, here's how you can contribute:
 
 1. **Create or choose an issue**:
@@ -62,16 +62,13 @@ If you're interested in improving the platform itself, here's how you can contri
    - Link the related issue in your pull request description.
 
 ## Pull Request Process
-
 1. Ensure your code follows our style guidelines and passes all tests.
 2. Update the README.md or relevant documentation with details of changes, if applicable.
 3. Your pull request will be reviewed by maintainers. Be open to feedback and be prepared to make changes if requested.
 4. Once approved, your pull request will be merged by a maintainer.
 
 ## Community
-
 We encourage all contributors to join [our Discord channel](https://discord.gg/DWAVqksVtx). It's a great place to:
-
 - Discuss your contributions
 - Get help from maintainers and other contributors
 - Stay updated on project news and priorities
