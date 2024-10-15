@@ -1,0 +1,57 @@
+---
+import { Image } from 'astro:assets';
+import { getEntry, type CollectionEntry } from 'astro:content';
+import { Badge } from './ui/badge';
+import {
+	Card,
+	CardDescription,
+	CardFooter,
+	CardHeader,
+	CardTitle,
+} from './ui/card';
+
+type Props = CollectionEntry<'blog'>;
+
+const { data } = Astro.props;
+
+const { data: author } = await getEntry(data.author);
+---
+
+<Card className='scale-95 overflow-hidden transition-all hover:scale-100'>
+	<Image class='min-h-40' src={data.cover} alt={data.title} />
+	<CardHeader className='pb-4'>
+		<CardTitle>{data.title}</CardTitle>
+		<CardDescription className='line-clamp-2'
+			>{data.description}</CardDescription
+		>
+	</CardHeader>
+	<CardFooter className='flex flex-col gap-4'>
+		<div class='flex w-full flex-wrap items-center justify-between gap-5'>
+			<div class='flex items-center gap-2'>
+				{
+					author.picture ? (
+						<Image
+							class='size-8 rounded-full'
+							src={author.picture}
+							alt={author.name}
+						/>
+					) : (
+						<div class='flex size-8 flex-col items-center justify-center rounded-full bg-primary text-white'>
+							{author.name.charAt(0).toUpperCase()}
+						</div>
+					)
+				}
+				<p>{author.name}</p>
+			</div>
+			<Badge variant='outline'>
+				<span class='sr-only'>Published on: </span>{
+					data.publishDate.toLocaleDateString('en-in', {
+						year: 'numeric',
+						month: 'short',
+						day: 'numeric',
+					})
+				}</Badge
+			>
+		</div>
+	</CardFooter>
+</Card>
