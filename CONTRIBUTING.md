@@ -26,6 +26,7 @@ We're always looking for high-quality content to help frontend developers learn 
 2. **Create your author profile**:
    - Add your profile to the `src/content/authors` folder.
    - Use existing profiles as a reference for the required information.
+   - Role is optional and you can use the `contributor` role. (`core team` is reserved for the founders)
 
 3. **Create the content**:
    - Follow the structure of existing content as a guide.
@@ -52,6 +53,8 @@ If you're interested in improving the platform itself, here's how you can contri
 
 2. **Create your author profile** (if you haven't already):
    - Add your profile to the `src/content/authors` folder.
+   - Use existing profiles as a reference for the required information.
+   - Role is optional and you can use the `contributor` role. (`core team` is reserved for the founders)
 
 3. **Work on the issue**:
    - Fork the repository and create a branch for your work.
