@@ -39,9 +39,9 @@ const description = post.data.description;
 		canonicalUrl={post.data.canonicalUrl}
 	/>
 	<main class='mx-auto -mt-5 flex max-w-3xl flex-col gap-4'>
-		<div class='flex flex-col gap-2'>
+		<div class='flex flex-col gap-2 border-b pb-2'>
 			<Image src={post.data.cover} alt={post.data.title} />
-			<h1 class='text-3xl font-black'>{post.data.title}</h1>
+			<h1 class='mt-1 text-3xl font-black'>{post.data.title}</h1>
 			<p class='text-xl text-muted-foreground'>{post.data.description}</p>
 			<div class='flex w-full flex-wrap items-center justify-between gap-5'>
 				<div class='flex items-center gap-2'>
