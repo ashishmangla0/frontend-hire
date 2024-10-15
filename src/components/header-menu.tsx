@@ -6,29 +6,34 @@ import {
 	NavigationMenuList,
 	NavigationMenuTrigger,
 } from '@/components/ui/navigation-menu';
+import { ROUTES } from '@/constants/site-config';
 
 export default function HeaderMenu() {
 	return (
 		<NavigationMenu>
 			<NavigationMenuList>
-				<NavigationMenuItem>
-					<NavigationMenuTrigger>Practice</NavigationMenuTrigger>
-					<NavigationMenuContent>
-						<ul className='grid w-[200px] gap-2 p-2'>
-							<ListItem href='/questions'>Questions</ListItem>
-							<ListItem href='/interviews'>Interviews</ListItem>
-						</ul>
-					</NavigationMenuContent>
-				</NavigationMenuItem>
-				<NavigationMenuItem>
-					<NavigationMenuTrigger>Learn</NavigationMenuTrigger>
-					<NavigationMenuContent>
-						<ul className='grid w-[200px] gap-2 p-2'>
-							<ListItem href='/courses'>Courses</ListItem>
-							<ListItem href='/system-design'>System-Design</ListItem>
-						</ul>
-					</NavigationMenuContent>
-				</NavigationMenuItem>
+				{ROUTES.filter((route) => route.showOnMainNav).map((route) =>
+					route.subRoutes ? (
+						<NavigationMenuItem key={route.name}>
+							<NavigationMenuTrigger>{route.name}</NavigationMenuTrigger>
+							<NavigationMenuContent>
+								<ul className='grid w-[200px] gap-2 p-2'>
+									{route.subRoutes.map((subRoute) =>
+										subRoute.url ? (
+											<ListItem key={subRoute.name} href={subRoute.url}>
+												{subRoute.name}
+											</ListItem>
+										) : null,
+									)}
+								</ul>
+							</NavigationMenuContent>
+						</NavigationMenuItem>
+					) : (
+						<ListItem key={route.name} href={route.url}>
+							{route.name}
+						</ListItem>
+					),
+				)}
 			</NavigationMenuList>
 		</NavigationMenu>
 	);
