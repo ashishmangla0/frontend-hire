@@ -7,7 +7,7 @@ import { buttonVariants } from '@/components/ui/button';
 import ProseLayout from '@/layouts/prose-layout.astro';
 import QuestionLayoutWrapper from '@/layouts/question-layout-wrapper';
 import QuestionLayout from '@/layouts/question-layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 export async function getStaticPaths() {
 	const allQuestions = await getCollection('questions');
@@ -25,9 +25,6 @@ export async function getStaticPaths() {
 }
 
 const { question } = Astro.props;
-
-const title = question.data.title;
-const description = question.data.description;
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 let QuestionContent: any;
@@ -55,10 +52,22 @@ if (question.data.type === 'coding') {
 
 	TheoryContent = LocalTheoryContent;
 }
+
+const author = await getEntry(question.data.author);
+
+const title = question.data.title;
+const description = question.data.description;
 ---
 
 <QuestionLayout>
-	<SEO slot='head' title={title} description={description} />
+	<SEO
+		slot='head'
+		title={title}
+		description={description}
+		pageType='article'
+		author={author.data.name}
+		date={question.data.publishDate.toISOString()}
+	/>
 
 	<header slot='header' class='relative flex items-center justify-between py-2'>
 		<a class={buttonVariants({ variant: 'secondary' })} href='/questions'
