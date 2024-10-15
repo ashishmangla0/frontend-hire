@@ -1,47 +1,76 @@
-# Astro Starter Kit: Minimal
+# FRONTEND-HIRE
 
-```sh
-npm create astro@latest -- --template minimal
+FRONTEND-HIRE is an open-source platform dedicated to frontend development resources, including courses, questions, and system design materials.
+
+## Project Structure
+
+```
+FRONTEND-HIRE
+├── public
+├── src
+│   ├── components
+│   ├── constants
+│   ├── content
+│   │   ├── authors
+│   │   ├── courses
+│   │   ├── questions
+│   │   └── system-design
+│   ├── layouts
+│   ├── pages
+│   │   ├── authors
+│   │   ├── courses
+│   │   ├── questions
+│   │   └── system-design
+│   ├── schema
+│   ├── scripts
+│   ├── styles
+│   ├── types
+│   └── utils
+├── config.ts
+└── env.d.ts
 ```
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+### Key Directories and Files
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- `public/`: Static assets that are served directly.
+- `src/`: Source code of the application.
+  - `components/`: Reusable UI components.
+  - `constants/`: Constant values used throughout the application.
+  - `content/`: Structured content for the platform.
+    - `authors/`: Information about content creators and contributors.
+    - `courses/`: Course materials and structures.
+    - `questions/`: Coding questions and challenges.
+    - `system-design/`: System design material.
+  - `layouts/`: Page layout components.
+  - `pages/`: Main page components, mirroring the content structure.
+  - `schema/`: Data schemas for content validation.
+  - `scripts/`: Utility scripts for development or build processes.
+  - `styles/`: Global styles and CSS modules.
+  - `types/`: TypeScript type definitions.
+  - `utils/`: Utility functions used across the application.
 
-## 🚀 Project Structure
+## Technology Stack
 
-Inside of your Astro project, you'll see the following folders and files:
+- [Astro](https://astro.build/)
+- [TypeScript](https://docs.astro.build/en/guides/typescript/)
+- [ShadCN](https://ui.shadcn.com/)
+- [Tailwind CSS](https://tailwindcss.com/)
+- [Netlify](https://www.netlify.com/)
+- [Prettier](https://prettier.io/)
+- [pnpm](https://pnpm.io/)
+- [ESLint](https://eslint.org/)
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## Getting Started
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+1. Fork the repo.
+2. Clone the repo.
+3. Run `pnpm install` to install dependencies.
+4. Run `pnpm run dev` to start the development server.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Contributing
 
-Any static assets, like images, can be placed in the `public/` directory.
+We welcome contributions! Please see our [CONTRIBUTING.md](./CONTRIBUTING.md) for details on how to submit content, report issues, or propose new features.
 
-## 🧞 Commands
+## Contact
 
-All commands are run from the root of the project, from a terminal:
-
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
-
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+We are best reached via [our Discord server](https://discord.gg/DWAVqksVtx).
