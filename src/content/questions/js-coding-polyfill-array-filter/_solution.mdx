@@ -126,19 +126,18 @@ describe('polyfill-array-filter', () => {
 
 Now that the basic tests are done, we can start implementing the actual polyfill.
 
-```js title="index.js"
+```js title="index.js" ins={2}
 export function myFilter(cb) {
-	const result = []; // [!code ++]
+	const result = [];
 }
 ```
 
 We will use the `result` array to store the filtered values. Remember that we need to return a new array and not modify the original array. Of course, we return a shallow copy of the original array.
 
-```js title="index.js"
+```js title="index.js" ins={4-10}
 export function myFilter(cb) {
 	const result = [];
 
-	// [!code ++:8]
 	for (let i = 0; i < this.length; i++) {
 		if (cb(this[i], i, this)) {
 			result.push(this[i]);
