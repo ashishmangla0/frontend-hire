@@ -3,9 +3,8 @@ import BaseLayoutWithHeader from './base-layout-with-header.astro';
 import ProseLayout from './prose-layout.astro';
 ---
 
-<slot name='head' />
-
 <BaseLayoutWithHeader>
+	<slot name='head' slot='head' />
 	<!-- TODO: Make it fixed? -->
 	<div class='mb-4 lg:hidden'>
 		<slot name='mobile-menu' />
