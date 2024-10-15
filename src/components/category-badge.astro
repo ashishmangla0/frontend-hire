@@ -1,12 +1,12 @@
 ---
+import { CATEGORIES } from '@/constants/category';
+import type { Category } from '@/types/content';
 import { cn } from '@/utils/classnames';
 import { AstroError } from 'astro/errors';
 import { cva } from 'class-variance-authority';
 import { Badge } from './ui/badge';
-import type { Category } from '@/types/content';
-import { CATEGORIES } from '@/constants/category';
 
-const categoryVariants = cva('', {
+export const categoryVariants = cva('', {
 	variants: {
 		variant: {
 			svelte:

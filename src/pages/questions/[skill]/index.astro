@@ -1,0 +1,82 @@
+---
+import PageHeading from '@/components/page-heading.astro';
+import QuestionCard from '@/components/question-card.astro';
+import SEO from '@/components/seo.astro';
+import { Badge } from '@/components/ui/badge';
+import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+	const allQuestions = await getCollection('questions');
+
+	return allQuestions.map((question) => {
+		return {
+			params: {
+				skill: question.data.skill,
+			},
+			props: { allQuestions },
+		};
+	});
+}
+
+const { skill } = Astro.params;
+const { allQuestions } = Astro.props;
+
+const filteredQuestions = allQuestions.filter(
+	(question) => question.data.skill === skill,
+);
+
+filteredQuestions.sort((a, b) => {
+	const difficultyOrder = {
+		easy: 1,
+		medium: 2,
+		hard: 3,
+	};
+	return (
+		difficultyOrder[a.data.difficulty] - difficultyOrder[b.data.difficulty]
+	);
+});
+
+const typeFilter = [
+	...new Set(filteredQuestions.map((question) => question.data.type)),
+];
+
+const title = `${skill[0].toUpperCase() + skill.slice(1)} Questions`;
+const description = `${skill[0].toUpperCase() + skill.slice(1)} questions meant for real world and interview based scenarios.`;
+---
+
+<BaseLayoutWithHeader>
+	<SEO slot='head' title={title} description={description} />
+	<main class='flex flex-col gap-4'>
+		<PageHeading title={title} description={description} />
+		<div class='flex items-center justify-between gap-2'>
+			<p class='text-muted-foreground'>
+				Filtered questions: {filteredQuestions.length}
+			</p>
+			<a href='/questions'><Badge>Show All Questions</Badge></a>
+		</div>
+
+		<span class='flex flex-wrap gap-2'
+			>{
+				typeFilter.map((type) => (
+					<Badge variant={type === 'coding' ? 'secondary' : 'outline'}>
+						<a href={`/questions/${skill}/${type}`}>{type}</a>
+					</Badge>
+				))
+			}</span
+		>
+		<ul class='flex flex-col gap-2'>
+			{
+				filteredQuestions.map((question) => (
+					<li>
+						<a
+							href={`/questions/${question.data.skill}/${question.data.type}/${question.slug}`}
+						>
+							<QuestionCard {...question} />
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</main>
+</BaseLayoutWithHeader>

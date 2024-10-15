@@ -14,7 +14,11 @@ export async function getStaticPaths() {
 
 	return allQuestions.map((question) => {
 		return {
-			params: { questionId: question.slug },
+			params: {
+				skill: question.data.skill,
+				type: question.data.type,
+				questionId: question.slug,
+			},
 			props: { question },
 		};
 	});
@@ -34,19 +38,19 @@ let TheoryContent: any;
 
 if (question.data.type === 'coding') {
 	const { Content: LocalQuestionContent } = await import(
-		`../../../content/questions/${question.slug}/_question.mdx`
+		`../../../../../content/questions/${question.slug}/_question.mdx`
 	);
 
 	QuestionContent = LocalQuestionContent;
 
 	const { Content: LocalSolutionContent } = await import(
-		`../../../content/questions/${question.slug}/_solution.mdx`
+		`../../../../../content/questions/${question.slug}/_solution.mdx`
 	);
 
 	SolutionContent = LocalSolutionContent;
 } else {
 	const { Content: LocalTheoryContent } = await import(
-		`../../../content/questions/${question.slug}/_theory.mdx`
+		`../../../../../content/questions/${question.slug}/_theory.mdx`
 	);
 
 	TheoryContent = LocalTheoryContent;
