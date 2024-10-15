@@ -1,7 +1,7 @@
 const BUILD_MODE = process.env.BUILD_ENV || 'production';
 
 const SITE_URL = (() => {
-	let siteUrl = process.env.SITE_URL || process.env.VERCEL_URL || '';
+	let siteUrl = process.env.URL || process.env.VERCEL_URL || '';
 
 	if (siteUrl && !siteUrl.startsWith('http')) siteUrl = `https://${siteUrl}`;
 
@@ -21,11 +21,14 @@ const SITE_URL = (() => {
 
 const SITE_METADATA = {
 	title: 'Frontend Hire',
+	author: 'Frontend Hire and Contributors',
 	description:
 		'We are solving Frontend Interviews and Hiring. Our platform helps developers build essential frontend skills, preparing them for technical interviews and real-world development.',
 	siteUrl: SITE_URL,
+	socialImage: `${SITE_URL}/social-image.png`,
 	keywords:
 		'frontend, web development, javascript, typescript, react, astro, svelte, next.js, questions, courses',
+	twitterHandle: '@frontendhire',
 	socials: [
 		{
 			name: 'LinkedIn',
