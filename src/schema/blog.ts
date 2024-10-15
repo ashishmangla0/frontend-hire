@@ -9,4 +9,5 @@ export const blogSchema = ({ image }: SchemaContext) =>
 		author: reference('authors'),
 		cover: image(),
 		tags: z.array(z.string()).optional(),
+		canonicalUrl: z.string().optional(),
 	});

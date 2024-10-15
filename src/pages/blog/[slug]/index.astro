@@ -28,7 +28,16 @@ const description = post.data.description;
 ---
 
 <BaseLayoutWithHeader>
-	<SEO slot='head' title={title} description={description} />
+	<SEO
+		slot='head'
+		title={title}
+		description={description}
+		pageType='article'
+		author={author.name}
+		date={post.data.publishDate.toISOString()}
+		image={post.data.cover}
+		canonicalUrl={post.data.canonicalUrl}
+	/>
 	<main class='mx-auto -mt-5 flex max-w-3xl flex-col gap-4'>
 		<div class='flex flex-col gap-2'>
 			<Image src={post.data.cover} alt={post.data.title} />
