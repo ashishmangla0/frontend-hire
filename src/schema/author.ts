@@ -7,6 +7,7 @@ export const authorSchema = ({ image }: SchemaContext) =>
 		headline: z.string().optional(),
 		picture: image().optional(),
 		order: z.number().optional(),
+		role: z.enum(['core team', 'contributor']).optional(),
 		joiningDate: z.date(),
 		socials: z
 			.array(

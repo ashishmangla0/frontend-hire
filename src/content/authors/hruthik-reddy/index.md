@@ -4,6 +4,7 @@ pronouns: he/him
 headline: Building Frontend Hire
 joiningDate: 2023-10-08
 picture: ./hruthik-reddy.webp
+role: core team
 socials:
   [
     {

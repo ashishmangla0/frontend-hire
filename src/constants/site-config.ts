@@ -200,6 +200,10 @@ const ROUTES: Route[] = [
 				url: '/about',
 			},
 			{
+				name: 'Authors',
+				url: '/authors',
+			},
+			{
 				name: 'Blog',
 				url: '/blog',
 			},

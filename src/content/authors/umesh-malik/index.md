@@ -4,6 +4,7 @@ pronouns: he/him
 headline: Building Frontend Hire
 joiningDate: 2024-08-15
 picture: ./umesh-malik.webp
+role: core team
 socials:
   [
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/umesh-malik/' },

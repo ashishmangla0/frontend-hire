@@ -1,6 +1,7 @@
 ---
 import { Image } from 'astro:assets';
 import type { CollectionEntry } from 'astro:content';
+import { Badge } from './ui/badge';
 import {
 	Card,
 	CardDescription,
@@ -13,7 +14,7 @@ type Props = CollectionEntry<'authors'>;
 
 const { data } = Astro.props;
 
-const { name, picture, pronouns, headline, socials } = data;
+const { name, picture, pronouns, headline, socials, role } = data;
 
 const getSocialIcon = (name: string) => {
 	switch (name.toLowerCase()) {
@@ -31,7 +32,17 @@ const getSocialIcon = (name: string) => {
 };
 ---
 
-<Card className='h-full'>
+<Card className='relative h-full overflow-hidden'>
+	{
+		role && (
+			<Badge
+				variant={role === 'core team' ? 'default' : 'secondary'}
+				className='absolute top-0 right-0 rounded-none'
+			>
+				{role}
+			</Badge>
+		)
+	}
 	<CardHeader className='flex flex-col items-center justify-center text-center'>
 		{
 			picture ? (
