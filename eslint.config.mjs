@@ -39,5 +39,6 @@ export default [
 			'astro/no-unused-define-vars-in-style': 'error',
 		},
 	},
+	{ ignores: ['_legacy_questions/*'] },
 	prettierConfig,
 ];
