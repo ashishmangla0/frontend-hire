@@ -99,7 +99,7 @@ I have already started to focus on [the Discord community](https://discord.gg/DW
 
 I would also fork the new Frontend Hire repo, make some basic changes, and launch Backend Hire as a sister product too. I'll let the community drive this if they want.
 
-I will still be pushing occasional content to Frontend Hire and maybe even Backend Hire, and try to encourage the community to contribute to these projects. But for me, this project is primarily dead, and I can't afford to spend much time or energy on it.
+I will still be pushing occasional content to Frontend Hire and maybe even Backend Hire, and try to encourage the community to contribute to these projects. I'll migrate the old content as soon as possible. But for me, this project is primarily dead, and I can't afford to spend much time or energy on it.
 
 However, I had a ton of fun, learned a lot, and built a great network through this project. I hope you enjoyed it too.
 
