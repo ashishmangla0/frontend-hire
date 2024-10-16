@@ -45,14 +45,17 @@ Every time I felt like killing the project, people used to message me out of the
 Here is what [one pro user said](https://www.linkedin.com/posts/yarala-hruthik-reddy_frontendhire-content-activity-7225436948289445888-qmjj?utm_source=share&utm_medium=member_desktop) about the project:
 
 > Thank you for the discount, I really appreciate the work you’re putting in to frontendhire.
+>
 > I’ve been following your posts and they’re always reallly genuine and helpful. Such a breath of fresh air compared to all the other content out there.
+>
 > Wishing you the best and will be looking to support you further for all the projects you have coming up
 
 What [another pro user said](https://www.linkedin.com/posts/yarala-hruthik-reddy_frontendhire-pro-activity-7242180369528070144-zai7?utm_source=share&utm_medium=member_desktop):
 
 > Thank you.
-> This is my first ever purchase related to learning/programming. I've never bought courses, ai helpers, not even leetcode subscriptions.
-> Always learnt from documentation, mdn, articles, blogs and videos for free. But your inspiring work and depth of knowledge convinced me.
+>
+> This is my first ever purchase related to learning/programming. I've never bought courses, ai helpers, not even leetcode subscriptions. Always learnt from documentation, mdn, articles, blogs and videos for free. But your inspiring work and depth of knowledge convinced me.
+>
 > Hope to learn a lot more in the future.
 
 This kept me going for a few more days. Until I burned out completely.
