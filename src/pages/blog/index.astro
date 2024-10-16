@@ -1,0 +1,35 @@
+---
+import BlogCard from '@/components/blog-card.astro';
+import PageHeading from '@/components/page-heading.astro';
+import SEO from '@/components/seo.astro';
+import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
+import { getCollection } from 'astro:content';
+
+const title = 'Blog';
+const description = 'All the articles on this platform.';
+
+const posts = await getCollection('blog');
+
+posts.sort(
+	(a, b) => b.data.publishDate.getTime() - a.data.publishDate.getTime(),
+);
+---
+
+<BaseLayoutWithHeader>
+	<SEO slot='head' title={title} description={description} />
+
+	<main class='flex flex-col gap-4'>
+		<PageHeading title={title} description={description} />
+		<ul class='grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'>
+			{
+				posts.map((post) => (
+					<li>
+						<a href={`/blog/${post.slug}`}>
+							<BlogCard {...post} />
+						</a>
+					</li>
+				))
+			}
+		</ul>
+	</main>
+</BaseLayoutWithHeader>

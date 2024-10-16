@@ -1,0 +1,55 @@
+---
+import Logo from '@/components/logo.astro';
+import { ROUTES, SITE_METADATA } from '@/constants/site-config';
+---
+
+<footer
+	class='container mx-auto flex flex-col gap-4 border-t p-4 text-center text-sm'
+>
+	<div class='flex flex-col items-center justify-between gap-4 md:flex-row'>
+		<div class='flex flex-col items-start gap-2'>
+			<Logo />
+			<ul class='mt-2 grid grid-cols-3 gap-4'>
+				{
+					SITE_METADATA.socials.map((social) => (
+						<li>
+							<a
+								class='transition-colors hover:text-primary'
+								target='_blank'
+								href={social.url}
+							>
+								<span class='sr-only'>{social.name}</span>
+								<Fragment set:html={social.icon} />
+							</a>
+						</li>
+					))
+				}
+			</ul>
+		</div>
+		<div class='flex flex-wrap gap-5'>
+			{
+				ROUTES.map(
+					(route) =>
+						route.subRoutes && (
+							<div class='flex flex-col items-start gap-3'>
+								<h3 class='font-medium'>{route.name}</h3>
+								<ul class='flex flex-col items-start gap-2 text-muted-foreground'>
+									{route.subRoutes.map((subRoute) => (
+										<li>
+											<a href={subRoute.url}>{subRoute.name}</a>
+										</li>
+									))}
+								</ul>
+							</div>
+						),
+				)
+			}
+		</div>
+	</div>
+	<span class='text-sm text-muted-foreground'>
+		Frontend Hire is an open-source platform and a community driven by <a
+			class='text-foreground underline underline-offset-2'
+			href='https://withyhr.com/'>YHR</a
+		> and the contributors.
+	</span>
+</footer>

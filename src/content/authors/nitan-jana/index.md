@@ -4,6 +4,7 @@ pronouns: he/him
 headline: Fullstack Developer in Progress | Driven to Learn, Build, and Solve.
 picture: ./nitan-jana.webp
 joiningDate: 2024-10-09
+role: contributor
 socials:
   [
     { name: 'LinkedIn', url: 'https://www.linkedin.com/in/nitan-jana/' },

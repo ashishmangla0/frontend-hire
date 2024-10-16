@@ -7,13 +7,13 @@ import { ViewTransitions } from 'astro:transitions';
 
 <html lang='en' class='scroll-pt-20 scroll-smooth'>
 	<head>
-		<meta charset='utf-8' />
-		<link rel='icon' type='image/svg+xml' href='/favicon.svg' />
-		<meta name='viewport' content='width=device-width' />
-		<meta name='generator' content={Astro.generator} />
-		<slot slot='head' name='head' />
+		<slot name='head' />
 		<ViewTransitions fallback='swap' />
 		<ThemeBlockingScript />
+		<script
+			defer
+			data-domain='frontendhire.com'
+			src='https://plausible.io/js/script.js'></script>
 	</head>
 	<body>
 		<slot />

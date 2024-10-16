@@ -5,7 +5,7 @@ import MobileContentMenu from '@/components/mobile-content-menu';
 import SEO from '@/components/seo.astro';
 import TableOfContents from '@/components/table-of-contents';
 import ContentLayout from '@/layouts/content-layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 export async function getStaticPaths() {
 	const allSystemDesigns = await getCollection('system-design');
@@ -55,6 +55,8 @@ const getSystemDesignChapterTitle = () => {
 	return systemDesignChapter.title + ' | ' + systemDesign.data.title;
 };
 
+const author = await getEntry(systemDesign.data.author);
+
 const title = getSystemDesignChapterTitle();
 const description = systemDesign.data.description;
 
@@ -65,7 +67,14 @@ const chapterListForNavigation = allChapters.map((chapter) => ({
 ---
 
 <ContentLayout>
-	<SEO slot='head' title={title} description={description} />
+	<SEO
+		slot='head'
+		title={title}
+		description={description}
+		pageType='article'
+		author={author.data.name}
+		date={systemDesign.data.publishDate.toISOString()}
+	/>
 	<ChapterList
 		slot='left-sidebar'
 		contentType='system-design'

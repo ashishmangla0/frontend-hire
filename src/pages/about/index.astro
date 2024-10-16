@@ -1,0 +1,38 @@
+---
+import PageHeading from '@/components/page-heading.astro';
+import SEO from '@/components/seo.astro';
+import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
+import ProseLayout from '@/layouts/prose-layout.astro';
+import { getCollection } from 'astro:content';
+import { Content } from './_page.md';
+import AuthorCard from '@/components/author-card.astro';
+
+const authors = await getCollection('authors');
+
+authors.sort(
+	(a, b) => a.data.joiningDate.getTime() - b.data.joiningDate.getTime(),
+);
+
+const title = 'About';
+const description = 'A little about us and our mission';
+---
+
+<BaseLayoutWithHeader>
+	<SEO slot='head' title={title} description={description} />
+	<main class='mx-auto flex max-w-[65ch] flex-col gap-4'>
+		<PageHeading title={title} description={description} />
+		<ProseLayout>
+			<Content />
+		</ProseLayout>
+
+		<ul class='grid grid-cols-1 gap-5 md:grid-cols-2'>
+			{
+				authors.map((author) => (
+					<li class='h-full'>
+						<AuthorCard {...author} />
+					</li>
+				))
+			}
+		</ul>
+	</main>
+</BaseLayoutWithHeader>

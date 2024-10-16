@@ -1,16 +1,13 @@
 ---
+import HeaderMenu from './header-menu';
 import Logo from './logo.astro';
 import { ModeToggle } from './mode-toggle';
 ---
 
 <header class='container flex h-full items-center justify-between'>
 	<Logo />
-	<nav>
-		<ul class='flex gap-4'>
-			<li><a href='/questions'>Questions</a></li>
-			<li><a href='/courses'>Courses</a></li>
-			<li><a href='/system-design'>System Design</a></li>
-		</ul>
-	</nav>
-	<ModeToggle client:load />
+	<div class='flex items-center gap-4'>
+		<HeaderMenu client:load />
+		<ModeToggle client:load />
+	</div>
 </header>

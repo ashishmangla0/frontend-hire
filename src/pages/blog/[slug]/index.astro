@@ -1,0 +1,78 @@
+---
+import SEO from '@/components/seo.astro';
+import { Badge } from '@/components/ui/badge';
+import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
+import ProseLayout from '@/layouts/prose-layout.astro';
+import { Image } from 'astro:assets';
+import { getCollection, getEntry } from 'astro:content';
+
+export async function getStaticPaths() {
+	const allPosts = await getCollection('blog');
+
+	return allPosts
+		.filter((post) => !post.data.isDraft)
+		.map((post) => ({
+			params: { slug: post.slug },
+			props: { post },
+		}));
+}
+
+const { post } = Astro.props;
+
+const { Content } = await post.render();
+
+const { data: author } = await getEntry(post.data.author);
+
+const title = post.data.title;
+const description = post.data.description;
+---
+
+<BaseLayoutWithHeader>
+	<SEO
+		slot='head'
+		title={title}
+		description={description}
+		pageType='article'
+		author={author.name}
+		date={post.data.publishDate.toISOString()}
+		image={post.data.cover}
+		canonicalUrl={post.data.canonicalUrl}
+	/>
+	<main class='mx-auto -mt-5 flex max-w-3xl flex-col gap-4'>
+		<div class='flex flex-col gap-2 border-b pb-2'>
+			<Image src={post.data.cover} alt={post.data.title} />
+			<h1 class='mt-1 text-3xl font-black'>{post.data.title}</h1>
+			<p class='text-xl text-muted-foreground'>{post.data.description}</p>
+			<div class='flex w-full flex-wrap items-center justify-between gap-5'>
+				<div class='flex items-center gap-2'>
+					{
+						author.picture ? (
+							<Image
+								class='size-8 rounded-full'
+								src={author.picture}
+								alt={author.name}
+							/>
+						) : (
+							<div class='flex size-8 flex-col items-center justify-center rounded-full bg-primary text-white'>
+								{author.name.charAt(0).toUpperCase()}
+							</div>
+						)
+					}
+					<p>{author.name}</p>
+				</div>
+				<Badge variant='outline'>
+					<span class='sr-only'>Published on: </span>{
+						post.data.publishDate.toLocaleDateString('en-in', {
+							year: 'numeric',
+							month: 'short',
+							day: 'numeric',
+						})
+					}</Badge
+				>
+			</div>
+		</div>
+		<ProseLayout>
+			<Content />
+		</ProseLayout>
+	</main>
+</BaseLayoutWithHeader>

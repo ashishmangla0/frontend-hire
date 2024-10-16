@@ -1,4 +1,5 @@
 import { authorSchema } from '@/schema/author';
+import { blogSchema } from '@/schema/blog';
 import { courseSchema } from '@/schema/course';
 import { questionSchema } from '@/schema/question';
 import { systemDesignSchema } from '@/schema/system-design';
@@ -24,9 +25,15 @@ const questionsCollection = defineCollection({
 	schema: questionSchema,
 });
 
+const blogCollection = defineCollection({
+	type: 'content',
+	schema: blogSchema,
+});
+
 export const collections = {
 	authors: authorCollection,
 	courses: coursesCollection,
 	'system-design': systemDesignCollection,
 	questions: questionsCollection,
+	blog: blogCollection,
 };

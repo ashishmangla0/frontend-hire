@@ -1,10 +1,11 @@
 ---
+import Footer from '@/components/footer.astro';
 import Header from '@/components/header.astro';
 import BaseLayout from './base-layout.astro';
 ---
 
 <BaseLayout>
-	<slot name='head' />
+	<slot name='head' slot='head' />
 	<div class='flex min-h-svh flex-col'>
 		<!-- FIXED HEADER -->
 		<div
@@ -19,4 +20,5 @@ import BaseLayout from './base-layout.astro';
 			</div>
 		</div>
 	</div>
+	<Footer />
 </BaseLayout>

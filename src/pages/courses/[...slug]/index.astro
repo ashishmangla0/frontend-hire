@@ -5,7 +5,7 @@ import MobileContentMenu from '@/components/mobile-content-menu';
 import SEO from '@/components/seo.astro';
 import TableOfContents from '@/components/table-of-contents';
 import ContentLayout from '@/layouts/content-layout.astro';
-import { getCollection } from 'astro:content';
+import { getCollection, getEntry } from 'astro:content';
 
 export async function getStaticPaths() {
 	const courses = await getCollection('courses');
@@ -51,6 +51,8 @@ const { Content, getHeadings } = await import(
 	`../../../content/courses/${course.slug}/_chapters/${courseChapter.slug}.mdx`
 );
 
+const author = await getEntry(course.data.author);
+
 const getCourseChapterTitle = () => {
 	return courseChapter.title + ' | ' + course.data.title;
 };
@@ -65,7 +67,15 @@ const chapterListForNavigation = allChapters.map((chapter) => ({
 ---
 
 <ContentLayout>
-	<SEO slot='head' title={title} description={description} />
+	<SEO
+		slot='head'
+		title={title}
+		description={description}
+		pageType='article'
+		author={author.data.name}
+		image={course.data.cover}
+		date={course.data.publishDate.toISOString()}
+	/>
 	<ChapterList
 		slot='left-sidebar'
 		contentType='courses'
