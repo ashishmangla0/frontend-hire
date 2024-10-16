@@ -9,6 +9,7 @@ import react from '@astrojs/react';
 
 import mdx from '@astrojs/mdx';
 
+import rehypeExternalLinks from 'rehype-external-links';
 import expressiveCode from 'astro-expressive-code';
 import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 
@@ -30,5 +31,6 @@ export default defineConfig({
 		shikiConfig: {
 			wrap: true,
 		},
+		rehypePlugins: [[rehypeExternalLinks, { target: '_blank' }]],
 	},
 });
