@@ -6,8 +6,6 @@ cover: ./cover.webp
 author: hruthik-reddy
 ---
 
-Here's the text with grammar and minor stylistic improvements:
-
 > TLDR: We thought we could make money. We are not making enough for the effort we put into it. So, rather than abandoning the project entirely, we decided to make it open source, allowing the community to benefit from and potentially build upon our work.
 
 ## 1. The part where I was having fun
