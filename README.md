@@ -1,6 +1,6 @@
-# FRONTEND-HIRE
+# Frontend Hire
 
-FRONTEND-HIRE is an open-source platform dedicated to frontend development resources, including courses, questions, and system design materials.
+Frontend Hire is an open-source platform dedicated to frontend development resources, including courses, questions, and system design materials.
 
 ## Project Structure
 
