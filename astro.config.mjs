@@ -6,7 +6,6 @@ import tailwind from '@astrojs/tailwind';
 import sitemap from '@astrojs/sitemap';
 
 import react from '@astrojs/react';
-import { SITE_URL } from './src/constants/site-config';
 
 import mdx from '@astrojs/mdx';
 
@@ -15,7 +14,7 @@ import { pluginLineNumbers } from '@expressive-code/plugin-line-numbers';
 
 // https://astro.build/config
 export default defineConfig({
-	site: SITE_URL,
+	site: 'https://frontendhire.com/',
 	integrations: [
 		tailwind({
 			applyBaseStyles: false,

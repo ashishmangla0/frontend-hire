@@ -1,21 +1,4 @@
-const SITE_URL = (() => {
-	let siteUrl = import.meta.env.SITE;
-
-	if (siteUrl && !siteUrl.startsWith('http')) siteUrl = `https://${siteUrl}`;
-
-	if (!siteUrl) {
-		switch (import.meta.env.MODE) {
-			case 'production':
-				return 'https://frontendhire.com';
-			case 'development':
-				return 'http://localhost:3000';
-			default:
-				return 'https://frontendhire.com';
-		}
-	}
-
-	return siteUrl;
-})();
+const SITE_URL = import.meta.env.SITE;
 
 const SITE_METADATA = {
 	title: 'Frontend Hire',
