@@ -172,10 +172,6 @@ const ROUTES: Route[] = [
 				name: 'Questions',
 				url: '/questions',
 			},
-			{
-				name: 'Interviews',
-				url: '/interviews',
-			},
 		],
 	},
 	{

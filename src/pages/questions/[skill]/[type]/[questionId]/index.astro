@@ -70,10 +70,13 @@ const description = question.data.description;
 	/>
 
 	<header slot='header' class='relative flex items-center justify-between py-2'>
-		<a class={buttonVariants({ variant: 'secondary' })} href='/questions'
-			>Back to Questions</a
+		<a
+			class={buttonVariants({ variant: 'secondary', size: 'sm' })}
+			href='/questions'>All Questions</a
 		>
-		<div class='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'>
+		<div
+			class='md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2'
+		>
 			<Logo />
 		</div>
 		<ModeToggle client:load />
@@ -81,8 +84,8 @@ const description = question.data.description;
 
 	{
 		question.data.type === 'theory' && (
-			<div class='flex h-0 grow flex-col overflow-y-auto rounded p-4'>
-				<ProseLayout class='mx-auto max-w-[65ch]'>
+			<div class='flex h-0 grow flex-col overflow-y-auto'>
+				<ProseLayout class='px-2 lg:px-20'>
 					<TheoryContent />
 				</ProseLayout>
 			</div>
