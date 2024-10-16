@@ -70,14 +70,16 @@ const description = question.data.description;
 	/>
 
 	<header slot='header' class='relative flex items-center justify-between py-2'>
-		<a
-			class={buttonVariants({ variant: 'secondary', size: 'sm' })}
-			href='/questions'>All Questions</a
-		>
-		<div
-			class='md:absolute md:left-1/2 md:top-1/2 md:-translate-x-1/2 md:-translate-y-1/2'
-		>
-			<Logo />
+		<div class='flex flex-row-reverse items-center gap-4'>
+			<a
+				class={buttonVariants({ variant: 'secondary', size: 'sm' })}
+				href='/questions'>All Questions</a
+			>
+			<div
+				class='sm:absolute sm:left-1/2 sm:top-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2'
+			>
+				<Logo />
+			</div>
 		</div>
 		<ModeToggle client:load />
 	</header>
