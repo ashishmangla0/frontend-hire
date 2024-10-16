@@ -10,6 +10,10 @@ import { ViewTransitions } from 'astro:transitions';
 		<slot name='head' />
 		<ViewTransitions fallback='swap' />
 		<ThemeBlockingScript />
+		<script
+			defer
+			data-domain='frontendhire.com'
+			src='https://plausible.io/js/script.js'></script>
 	</head>
 	<body>
 		<slot />
