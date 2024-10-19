@@ -64,6 +64,8 @@ const chapterListForNavigation = allChapters.map((chapter) => ({
 	title: chapter.title,
 	slug: `${systemDesign.slug}/${chapter.slug}`,
 }));
+
+const currentChapterSlug = `${systemDesign.slug}/${chapter.slug}`;
 ---
 
 <ContentLayout>
@@ -79,7 +81,7 @@ const chapterListForNavigation = allChapters.map((chapter) => ({
 		slot='left-sidebar'
 		contentType='system-design'
 		chapters={chapterListForNavigation}
-		currentChapterSlug={chapter.slug}
+		currentChapterSlug={currentChapterSlug}
 	/>
 	<MobileContentMenu
 		client:load
