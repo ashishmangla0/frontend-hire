@@ -40,15 +40,7 @@ const { data: author } = await getEntry(data.author);
 					)
 				}
 				<p>{author.name}</p>
-				<Badge variant='outline'>
-					<span class='sr-only'>Published on: </span>{
-						data.publishDate.toLocaleDateString('en-in', {
-							year: 'numeric',
-							month: 'short',
-							day: 'numeric',
-						})
-					}</Badge
-				>
+
 				<Badge variant='outline'
 					>{data.chapters.length}
 					{data.chapters.length > 1 ? ' Chapters' : ' Chapter'}</Badge
