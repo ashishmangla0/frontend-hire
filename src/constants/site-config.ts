@@ -169,7 +169,7 @@ const ROUTES: Route[] = [
 			},
 			{
 				name: 'Analytics',
-				url: 'https://plausible.io/frontendhire.com/',
+				url: '/analytics',
 			},
 		],
 	},
