@@ -167,6 +167,10 @@ const ROUTES: Route[] = [
 				name: 'Blog',
 				url: '/blog',
 			},
+			{
+				name: 'Analytics',
+				url: 'https://plausible.io/frontendhire.com/',
+			},
 		],
 	},
 ];
