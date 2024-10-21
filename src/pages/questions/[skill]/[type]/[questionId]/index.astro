@@ -1,7 +1,7 @@
 ---
 import ContentTabs from '@/components/content-tabs';
 import Logo from '@/components/logo.astro';
-import { ModeToggle } from '@/components/theme-toggle';
+import ThemeToggle from '@/components/theme-toggle';
 import SEO from '@/components/seo.astro';
 import { buttonVariants } from '@/components/ui/button';
 import ProseLayout from '@/layouts/prose-layout.astro';
@@ -81,7 +81,7 @@ const description = question.data.description;
 				<Logo />
 			</div>
 		</div>
-		<ModeToggle client:load />
+		<ThemeToggle client:load />
 	</header>
 
 	{
