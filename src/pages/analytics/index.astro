@@ -1,4 +1,5 @@
 ---
+import Callout from '@/components/mdx/callout.astro';
 import PageHeading from '@/components/page-heading.astro';
 import SEO from '@/components/seo.astro';
 import BaseLayoutWithHeader from '@/layouts/base-layout-with-header.astro';
@@ -12,6 +13,7 @@ const description = 'Look at how our platform is performing.';
 
 	<main class='flex grow flex-col'>
 		<PageHeading title={title} description={description} />
+
 		<iframe
 			title='Plausible Analytics for Frontend Hire'
 			plausible-embed
@@ -19,5 +21,20 @@ const description = 'Look at how our platform is performing.';
 			style='width: 1px; min-width: 100%; height: 1600px;'></iframe>
 		<script is:inline async src='https://plausible.io/js/embed.host.js'
 		></script>
+		<div class='prose mx-auto dark:prose-invert'>
+			<Callout type='error' title='Analytics Not Working?'
+				><p>
+					If you are not seeing anything on this page then it is highly likely
+					that <a
+						target='_blank'
+						href='https://github.com/plausible/analytics/issues/2550'
+						>your adblocker</a
+					> is interfering with the analytics. You can try disabling your adblocker
+					or <a href='https://plausible.io/frontendhire.com/' target='_blank'
+						>visit this public link</a
+					> to see the analytics.
+				</p>
+			</Callout>
+		</div>
 	</main>
 </BaseLayoutWithHeader>
