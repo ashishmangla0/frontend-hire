@@ -6,7 +6,7 @@ const SITE_METADATA = {
 	description:
 		'We are solving Frontend Interviews and Hiring. Our platform helps developers build essential frontend skills, preparing them for technical interviews and real-world development.',
 	siteUrl: SITE_URL,
-	socialImage: `${SITE_URL}/social-image.png`,
+	socialImage: '/social-image.png',
 	keywords:
 		'frontend, web development, javascript, typescript, react, astro, svelte, next.js, questions, courses',
 	twitterHandle: '@frontendhire',
